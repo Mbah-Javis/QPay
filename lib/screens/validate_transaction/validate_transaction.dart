@@ -174,7 +174,7 @@ class _ValidateTransaction extends State<ValidateTransaction>{
                             fontWeight: FontWeight.w700
                         ),
                       ),
-                      Text('Orange',
+                      Text('MTN',
                         style: const TextStyle(
                             color: Colors.black,
                             fontSize: 22,
@@ -264,6 +264,39 @@ class _ValidateTransaction extends State<ValidateTransaction>{
                   ),
                 ),
               ],
+            ),
+          ),
+          SizedBox(height: 20,),
+          SizedBox(
+            width: 200,
+            height: 43,
+            child: TextButton(
+              onPressed: () {
+              },
+              style:TextButton.styleFrom(
+                primary: kPrimaryAccentColor,
+                backgroundColor: kPrimaryAccentColor,
+                shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(30))),
+                elevation: 3,
+              ),
+              child:Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: const [
+                  SizedBox(width: 10,),
+                  Icon(
+                    Icons.check_circle_rounded,
+                    size: 25,
+                    color: Colors.white,
+                  ),
+                  SizedBox(width: 10,),
+                  Text('Confirm Payment', style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                  ),),
+                  SizedBox(width: 10,),
+                ],
+              ),
+
             ),
           ),
         ],

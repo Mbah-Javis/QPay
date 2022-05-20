@@ -224,8 +224,9 @@ class _HomePage extends State<HomePage>{
                         MyInputField(title: 'Item purchased', hint: 'Item purchased',
                           inputType: TextInputType.text, controller: itemPurchasedController,),
                         const SizedBox(height: 10,),
-                        Container(
+                        SizedBox(
                           width: 200,
+                          height: 43,
                           child: TextButton(
                             onPressed: () {
                               int phone = int.parse(phoneController.text.trim());
@@ -266,7 +267,7 @@ class _HomePage extends State<HomePage>{
 
                           ),
                         ),
-                        SizedBox(height: 10,),
+                        const SizedBox(height: 10,),
                       ],
                       ),
                     )
