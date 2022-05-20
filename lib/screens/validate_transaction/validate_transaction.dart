@@ -102,7 +102,7 @@ class _ValidateTransaction extends State<ValidateTransaction>{
             child: Column(
               children: [
                 Container(
-                  padding: EdgeInsets.only(bottom: 15, top: 5),
+                  padding: EdgeInsets.only(bottom: 15, top: 10),
                   decoration: BoxDecoration(
                       border: Border(
                           bottom: BorderSide(width: 1.0, color: kBorderColor)
@@ -111,17 +111,17 @@ class _ValidateTransaction extends State<ValidateTransaction>{
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const Text('Sending: ',
+                      const Text('Sending ',
                         style: TextStyle(
                             color: kGreyColor,
-                            fontSize: 20,
+                            fontSize: 18,
                             fontWeight: FontWeight.w700
                         ),
                       ),
                       Text(widget.amount.toString()+ ' XAF',
                         style: const TextStyle(
                             color: Colors.black,
-                            fontSize: 25,
+                            fontSize: 22,
                             fontWeight: FontWeight.bold
                         ),
                       ),
@@ -139,23 +139,24 @@ class _ValidateTransaction extends State<ValidateTransaction>{
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const Text('Sending: ',
+                      const Text('To ',
                         style: TextStyle(
                             color: kGreyColor,
-                            fontSize: 20,
+                            fontSize: 18,
                             fontWeight: FontWeight.w700
                         ),
                       ),
-                      Text(widget.amount.toString()+ ' XAF',
+                      Text(widget.phoneNumber.toString(),
                         style: const TextStyle(
                             color: Colors.black,
-                            fontSize: 25,
+                            fontSize: 22,
                             fontWeight: FontWeight.bold
                         ),
                       ),
                     ],
                   ),
                 ),
+                const SizedBox(height: 20,),
                 Container(
                   padding: EdgeInsets.only(bottom: 15, top: 5),
                   decoration: BoxDecoration(
@@ -166,17 +167,96 @@ class _ValidateTransaction extends State<ValidateTransaction>{
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const Text('Sending: ',
+                      const Text('Mobile money provider ',
                         style: TextStyle(
                             color: kGreyColor,
-                            fontSize: 20,
+                            fontSize: 18,
                             fontWeight: FontWeight.w700
                         ),
                       ),
-                      Text(widget.amount.toString()+ ' XAF',
+                      Text('Orange',
                         style: const TextStyle(
                             color: Colors.black,
-                            fontSize: 25,
+                            fontSize: 22,
+                            fontWeight: FontWeight.bold
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 20,),
+                Container(
+                  padding: EdgeInsets.only(bottom: 15, top: 5),
+                  decoration: BoxDecoration(
+                      border: Border(
+                          bottom: BorderSide(width: 1.0, color: kBorderColor)
+                      )
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Text('Service fee ',
+                        style: TextStyle(
+                            color: kGreyColor,
+                            fontSize: 18,
+                            fontWeight: FontWeight.w700
+                        ),
+                      ),
+                      Text('250.0 XAF',
+                        style: const TextStyle(
+                            color: Colors.black,
+                            fontSize: 22,
+                            fontWeight: FontWeight.bold
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 20,),
+                Container(
+                  padding: EdgeInsets.only(bottom: 15, top: 5),
+                  decoration: BoxDecoration(
+                      border: Border(
+                          bottom: BorderSide(width: 1.0, color: kBorderColor)
+                      )
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Text('Tax ',
+                        style: TextStyle(
+                            color: kGreyColor,
+                            fontSize: 18,
+                            fontWeight: FontWeight.w700
+                        ),
+                      ),
+                      Text('0 XAF',
+                        style: const TextStyle(
+                            color: Colors.black,
+                            fontSize: 22,
+                            fontWeight: FontWeight.bold
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 20,),
+                Container(
+                  padding: EdgeInsets.only(bottom: 15, top: 5),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Text('Total amount ',
+                        style: TextStyle(
+                            color: kGreyColor,
+                            fontSize: 18,
+                            fontWeight: FontWeight.w700
+                        ),
+                      ),
+                      Text('50250.0 XAF',
+                        style: const TextStyle(
+                            color: Colors.black,
+                            fontSize: 22,
                             fontWeight: FontWeight.bold
                         ),
                       ),
@@ -186,9 +266,6 @@ class _ValidateTransaction extends State<ValidateTransaction>{
               ],
             ),
           ),
-          Text(widget.phoneNumber.toString()),
-          Text(widget.amount.toString()),
-          Text(widget.itemPurchased.toString()),
         ],
       ),
     );
