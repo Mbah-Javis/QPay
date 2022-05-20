@@ -98,8 +98,8 @@ class _ValidateTransaction extends State<ValidateTransaction>{
                       ),
                     ),
                     Container(
-                      margin: const EdgeInsets.only(left: 10, bottom: 10, top: 15, right: 10),
-                      padding: EdgeInsets.all(15),
+                      margin: const EdgeInsets.only(left: 15, bottom: 10, top: 15, right: 15),
+                      padding: const EdgeInsets.all(15),
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
                           border: Border.all(width: 1, color: kBorderColor)
