@@ -25,6 +25,7 @@ class _HomePage extends State<HomePage>{
         children: [
           Container(
             color: kPrimaryColor,
+            padding: EdgeInsets.only(bottom: 4),
             child: Stack(
               children: [
                 Container(
@@ -63,75 +64,82 @@ class _HomePage extends State<HomePage>{
                   alignment: Alignment.topRight,
                   child:  SvgPicture.asset('assets/images/money.svg', height: 40, width: 40,),
                 ),
-                Row(
-                  children: [
-                    Container(
-                      margin: const EdgeInsets.only(top: 130, left: 20),
-                      child: const Text('130,550 XAF',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 28,
-                        ),
-                      ),
-                    ),
-                    Container(
-                        width: 40,
-                        padding: EdgeInsets.all(8),
-                        decoration: BoxDecoration(
-                          color: kGreenColor,
-                          borderRadius: BorderRadius.circular(25),
-                        ),
-                        margin: EdgeInsets.only(top: 130, left: 15),
-                        child: Text('+10', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600),)
-                    ),
-                  ],
-                ),
-                Container(
-                  width: 140,
-                  margin: EdgeInsets.only(top: 190, left: 20),
-                  child: TextButton(
-                    onPressed: () {  },
-                    style:TextButton.styleFrom(
-                      primary: kPrimaryAccentColor,
-                      backgroundColor: kPrimaryAccentColor,
-                      shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(30))),
-                      elevation: 3,
-                    ),
-                    child:Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
-                        SizedBox(width: 10,),
-                        Icon(
-                          Icons.money_rounded,
-                          size: 25,
-                          color: Colors.white,
-                        ),
-                        SizedBox(width: 10,),
-                        Text('Expenses', style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 18,
-                        ),),
-                        SizedBox(width: 10,),
-                      ],
-                    ),
-
-                  ),
-                ),
-                Container(
-                  margin: EdgeInsets.only(top: 150),
-                  alignment: Alignment.topRight,
-                  child:  SvgPicture.asset('assets/images/pay.svg', height: 100, width: 100,),
-                )
               ],
             ),
           ),
-          SizedBox(height: 20,),
           Expanded(
               child: SingleChildScrollView(
                 physics: const BouncingScrollPhysics(),
                 child: Column(
                   children: [
+                    Container(
+                      color: kPrimaryColor,
+                      child: Stack(
+                        children: [
+                          Row(
+                            children: [
+                              Container(
+                                margin: const EdgeInsets.only(top: 35, left: 20),
+                                child: const Text('130,550 XAF',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 28,
+                                  ),
+                                ),
+                              ),
+                              Container(
+                                  width: 40,
+                                  padding: EdgeInsets.all(8),
+                                  decoration: BoxDecoration(
+                                    color: kGreenColor,
+                                    borderRadius: BorderRadius.circular(25),
+                                  ),
+                                  margin: EdgeInsets.only(top: 30, left: 15),
+                                  child: Text('+10', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600),)
+                              ),
+                            ],
+                          ),
+                          Container(
+                            width: 140,
+                            margin: EdgeInsets.only(top: 90, left: 20),
+                            child: TextButton(
+                              onPressed: () {  },
+                              style:TextButton.styleFrom(
+                                primary: kPrimaryAccentColor,
+                                backgroundColor: kPrimaryAccentColor,
+                                shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(30))),
+                                elevation: 3,
+                              ),
+                              child:Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: const [
+                                  SizedBox(width: 10,),
+                                  Icon(
+                                    Icons.money_rounded,
+                                    size: 20,
+                                    color: Colors.white,
+                                  ),
+                                  SizedBox(width: 10,),
+                                  Text('Expenses', style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 18,
+                                  ),),
+                                  SizedBox(width: 10,),
+                                ],
+                              ),
+
+                            ),
+                          ),
+                          Container(
+                            margin: const EdgeInsets.only(top: 55),
+                            alignment: Alignment.topRight,
+                            child:  SvgPicture.asset('assets/images/pay.svg', height: 100, width: 100,),
+                          )
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 20,),
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.center,
