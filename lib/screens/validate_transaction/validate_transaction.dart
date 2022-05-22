@@ -207,7 +207,7 @@ class _ValidateTransaction extends State<ValidateTransaction>{
                                       fontWeight: FontWeight.w700
                                   ),
                                 ),
-                                Text('250.0 XAF',
+                                Text('${widget.amount*0.005}',
                                   style: const TextStyle(
                                       color: Colors.black,
                                       fontSize: 22,
