@@ -242,7 +242,7 @@ class _HomePage extends State<HomePage>{
                               double fee = amount*0.005;
                               String item = itemPurchasedController.text.toString();
                               Navigator.push(context, PageTransition(
-                                  child: ValidateTransaction(amount: amount, phoneNumber: phone, itemPurchased: item, fee: double),
+                                  child: ValidateTransaction(amount: amount, phoneNumber: phone, itemPurchased: item, fee: fee),
                                   type: PageTransitionType.rightToLeft
                               )
                               );

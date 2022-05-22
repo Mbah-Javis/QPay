@@ -7,7 +7,9 @@ class ValidateTransaction extends StatefulWidget{
   final int phoneNumber;
   final int amount;
   final String? itemPurchased;
-  const ValidateTransaction({Key? key, required this.phoneNumber, required this.amount, this.itemPurchased}) : super(key: key);
+  final double fee;
+  const ValidateTransaction({Key? key, required this.phoneNumber,
+    required this.amount, this.itemPurchased, required this.fee}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => _ValidateTransaction();
@@ -207,7 +209,7 @@ class _ValidateTransaction extends State<ValidateTransaction>{
                                       fontWeight: FontWeight.w700
                                   ),
                                 ),
-                                Text('${widget.amount*0.005}',
+                                Text(widget.fee.toString(),
                                   style: const TextStyle(
                                       color: Colors.black,
                                       fontSize: 22,
@@ -258,7 +260,7 @@ class _ValidateTransaction extends State<ValidateTransaction>{
                                       fontWeight: FontWeight.w700
                                   ),
                                 ),
-                                Text('50250.0 XAF',
+                                Text('${widget.amount+widget.fee}',
                                   style: const TextStyle(
                                       color: Colors.black,
                                       fontSize: 22,
