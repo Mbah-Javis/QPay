@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:qpay/constants.dart';
+import 'package:flutter/services.dart';
+import 'package:ussd_advanced/ussd_advanced.dart';
 
 class ValidateTransaction extends StatefulWidget{
   final int phoneNumber;
@@ -278,7 +280,15 @@ class _ValidateTransaction extends State<ValidateTransaction>{
                       width: 200,
                       height: 43,
                       child: TextButton(
-                        onPressed: () {
+                        onPressed: () async {
+                          int subscriptionId = 2; // sim card subscription ID
+                          String code = "#150#";
+                          String? _response;// ussd code payload
+                          try {
+                            await UssdAdvanced.sendUssd(code: code, subscriptionId: subscriptionId);
+                          } catch(e) {
+                            debugPrint("error! code: ${e.hashCode} - message: ${e.runtimeType}");
+                          }
                         },
                         style:TextButton.styleFrom(
                           primary: kPrimaryAccentColor,
