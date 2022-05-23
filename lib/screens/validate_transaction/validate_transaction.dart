@@ -19,6 +19,37 @@ class ValidateTransaction extends StatefulWidget{
 }
 
 class _ValidateTransaction extends State<ValidateTransaction>{
+
+  List<String> mtnNumbers = ['650','651','652','653','654','680'];
+  List<String> orangeNumbers = ['655','656','657','658','659'];
+  late String provider;
+
+  @override
+  void initState() {
+    provider = checkNumber(widget.phoneNumber.toString());
+    super.initState();
+  }
+  String checkNumber(String number){
+    if(number.substring(0,2) == '67'){
+      return 'mtn';
+    }
+    else if(number.substring(0,2) == '69'){
+      return 'orange';
+    } else{
+      int i = 0;
+      for(i==0; i<7;i++){
+        if(number.substring(0,3) == mtnNumbers[i]){
+          return 'mtn';
+        }else if(number.substring(0,3) == orangeNumbers[i]){
+          return 'orange';
+        }else{
+          return '';
+        }
+      }
+    }
+    return '';
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -111,7 +142,7 @@ class _ValidateTransaction extends State<ValidateTransaction>{
                       child: Column(
                         children: [
                           Container(
-                            padding: EdgeInsets.only(bottom: 15, top: 10),
+                            padding: const EdgeInsets.only(bottom: 15, top: 10),
                             decoration: BoxDecoration(
                                 border: Border(
                                     bottom: BorderSide(width: 1.0, color: kBorderColor)
@@ -165,7 +196,7 @@ class _ValidateTransaction extends State<ValidateTransaction>{
                               ],
                             ),
                           ),
-                          const SizedBox(height: 20,),
+                          const SizedBox(height: 10,),
                           Container(
                             padding: EdgeInsets.only(bottom: 15, top: 5),
                             decoration: BoxDecoration(
@@ -183,20 +214,25 @@ class _ValidateTransaction extends State<ValidateTransaction>{
                                       fontWeight: FontWeight.w700
                                   ),
                                 ),
-                                Text('MTN',
-                                  style: const TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 22,
-                                      fontWeight: FontWeight.bold
-                                  ),
-                                ),
+                                provider == 'mtn' ? ClipRRect(
+                                  borderRadius: BorderRadius.circular(5),
+                                  child: Image.asset('assets/images/mtn_logo.jpg', width: 40, height: 40,),
+                                ) : provider == 'orange' ? ClipRRect(
+                                  borderRadius: BorderRadius.circular(5),
+                                  child: Image.asset('assets/images/orange_logo.png', width: 40, height: 40,),
+                                ) : const Text('NA',
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 22,
+                                    fontWeight: FontWeight.bold
+                                ),),
                               ],
                             ),
                           ),
                           const SizedBox(height: 20,),
                           Container(
-                            padding: EdgeInsets.only(bottom: 15, top: 5),
-                            decoration: BoxDecoration(
+                            padding: const EdgeInsets.only(bottom: 15, top: 5),
+                            decoration: const BoxDecoration(
                                 border: Border(
                                     bottom: BorderSide(width: 1.0, color: kBorderColor)
                                 )
@@ -285,7 +321,7 @@ class _ValidateTransaction extends State<ValidateTransaction>{
                           String code = "#150#";
                           String? _response;// ussd code payload
                           try {
-                            await UssdAdvanced.sendUssd(code: code, subscriptionId: subscriptionId);
+                            //await UssdAdvanced.sendUssd(code: code, subscriptionId: subscriptionId);
                           } catch(e) {
                             debugPrint("error! code: ${e.hashCode} - message: ${e.runtimeType}");
                           }

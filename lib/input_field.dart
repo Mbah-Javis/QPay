@@ -55,7 +55,7 @@ class MyInputField extends StatelessWidget{
                     autofocus: false,
                     cursorColor: kPrimaryColor,
                     controller: controller,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontWeight: FontWeight.w400,
                       color: Colors.black,
                       fontSize: 18,

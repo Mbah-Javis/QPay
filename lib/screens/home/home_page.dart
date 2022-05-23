@@ -17,6 +17,9 @@ class _HomePage extends State<HomePage>{
   TextEditingController phoneController = TextEditingController();
   TextEditingController amountController = TextEditingController();
   TextEditingController itemPurchasedController = TextEditingController();
+
+  List<String> mtnNumbers = ['650','651','652','653','654', '67','680' ];
+  List<String> orangeNumbers = ['655','656','657','658','659','69'];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,13 +28,13 @@ class _HomePage extends State<HomePage>{
         children: [
           Container(
             color: kPrimaryColor,
-            padding: EdgeInsets.only(bottom: 4),
+            padding: const EdgeInsets.only(bottom: 4),
             child: Stack(
               children: [
                 Container(
                   margin: EdgeInsets.only(top:60),
                   alignment: Alignment.topCenter,
-                  child: Text('QPay',
+                  child: const Text('QPay',
                     style: TextStyle(
                         color: Colors.white,
                         fontSize: 20,
@@ -53,7 +56,7 @@ class _HomePage extends State<HomePage>{
                     ),
                     margin: EdgeInsets.only(top: 50, left: 20),
                     alignment: Alignment.topLeft,
-                    child: Icon(
+                    child: const Icon(
                       Icons.menu_rounded,
                       size: 25,
                       color: Colors.white,
