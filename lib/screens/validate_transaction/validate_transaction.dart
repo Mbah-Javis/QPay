@@ -2,7 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:qpay/constants.dart';
-import 'package:flutter/services.dart';
+import 'package:top_snackbar_flutter/custom_snack_bar.dart';
+import 'package:top_snackbar_flutter/top_snack_bar.dart';
 import 'package:ussd_advanced/ussd_advanced.dart';
 
 class ValidateTransaction extends StatefulWidget{
@@ -24,29 +25,33 @@ class _ValidateTransaction extends State<ValidateTransaction>{
   List<String> orangeNumbers = ['655','656','657','658','659'];
   late String provider;
 
+  late int subscriptionId; // sim card subscription ID
+  late String code;
+  String? _response; // ussd code payload
+
   @override
   void initState() {
     provider = checkNumber(widget.phoneNumber.toString());
     super.initState();
   }
   String checkNumber(String number){
-    if(number.substring(0,2) == '67'){
-      return 'mtn';
-    }
-    else if(number.substring(0,2) == '69'){
-      return 'orange';
-    } else{
-      int i = 0;
-      for(i==0; i<7;i++){
-        if(number.substring(0,3) == mtnNumbers[i]){
-          return 'mtn';
-        }else if(number.substring(0,3) == orangeNumbers[i]){
-          return 'orange';
-        }else{
-          return '';
+      if(number.substring(0,2) == '67'){
+        return 'mtn';
+      }
+      else if(number.substring(0,2) == '69'){
+        return 'orange';
+      } else{
+        int i = 0;
+        for(i==0; i<7;i++){
+          if(number.substring(0,3) == mtnNumbers[i]){
+            return 'mtn';
+          }else if(number.substring(0,3) == orangeNumbers[i]){
+            return 'orange';
+          }else{
+            return '';
+          }
         }
       }
-    }
     return '';
   }
 
@@ -259,16 +264,16 @@ class _ValidateTransaction extends State<ValidateTransaction>{
                           ),
                           const SizedBox(height: 20,),
                           Container(
-                            padding: EdgeInsets.only(bottom: 15, top: 5),
-                            decoration: BoxDecoration(
+                            padding: const EdgeInsets.only(bottom: 15, top: 5),
+                            decoration: const BoxDecoration(
                                 border: Border(
                                     bottom: BorderSide(width: 1.0, color: kBorderColor)
                                 )
                             ),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                const Text('Tax ',
+                              children: const [
+                                Text('Tax ',
                                   style: TextStyle(
                                       color: kGreyColor,
                                       fontSize: 18,
@@ -276,7 +281,7 @@ class _ValidateTransaction extends State<ValidateTransaction>{
                                   ),
                                 ),
                                 Text('0 XAF',
-                                  style: const TextStyle(
+                                  style: TextStyle(
                                       color: Colors.black,
                                       fontSize: 22,
                                       fontWeight: FontWeight.bold
@@ -317,13 +322,31 @@ class _ValidateTransaction extends State<ValidateTransaction>{
                       height: 43,
                       child: TextButton(
                         onPressed: () async {
-                          int subscriptionId = 2; // sim card subscription ID
-                          String code = "#150#";
-                          String? _response;// ussd code payload
                           try {
-                            //await UssdAdvanced.sendUssd(code: code, subscriptionId: subscriptionId);
+                            if(widget.phoneNumber.toString().length != 9){
+                              showTopSnackBar(
+                                context,
+                                const CustomSnackBar.info(
+                                  backgroundColor: kPrimaryAccentColor,
+                                  message:
+                                  "Invalid phone number. It has to be 9 digits",
+                                ),
+                              );
+                              Navigator.pop(context);
+                            }else{
+                              if(provider == 'mtn'){
+                                code = '*126*9*${widget.phoneNumber}*${widget.amount}#';
+                                subscriptionId = 1;
+                                await UssdAdvanced.sendUssd(code: code, subscriptionId: subscriptionId);
+                              }else if(provider == 'orange'){
+                                code = '#150*1*1*${widget.phoneNumber}*${widget.amount}#';
+                                subscriptionId = 2;
+                                await UssdAdvanced.sendUssd(code: code, subscriptionId: subscriptionId);
+                                Navigator.pop(context);
+                              }
+                            }
                           } catch(e) {
-                            debugPrint("error! code: ${e.hashCode} - message: ${e.runtimeType}");
+                            //debugPrint("error! code: ${e.hashCode} - message: ${e.runtimeType}");
                           }
                         },
                         style:TextButton.styleFrom(

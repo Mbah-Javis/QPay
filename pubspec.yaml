@@ -37,6 +37,7 @@ dependencies:
   flutter_svg: ^1.0.3
   page_transition: ^2.0.5
   ussd_advanced: ^1.0.0
+  top_snackbar_flutter: ^1.1.1
 
 dev_dependencies:
   flutter_test:

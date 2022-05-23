@@ -10,6 +10,7 @@ class TransactionsPage extends StatefulWidget{
 }
 
 class _TransactionsPage extends State<TransactionsPage>{
+
   @override
   Widget build(BuildContext context) {
     return Scaffold();
