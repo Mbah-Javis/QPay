@@ -337,12 +337,13 @@ class _ValidateTransaction extends State<ValidateTransaction>{
                               if(provider == 'mtn'){
                                 code = '*126*9*${widget.phoneNumber}*${widget.amount}#';
                                 subscriptionId = 1;
+                                Navigator.pop(context);
                                 await UssdAdvanced.sendUssd(code: code, subscriptionId: subscriptionId);
                               }else if(provider == 'orange'){
                                 code = '#150*1*1*${widget.phoneNumber}*${widget.amount}#';
                                 subscriptionId = 2;
-                                await UssdAdvanced.sendUssd(code: code, subscriptionId: subscriptionId);
                                 Navigator.pop(context);
+                                await UssdAdvanced.sendUssd(code: code, subscriptionId: subscriptionId);
                               }
                             }
                           } catch(e) {
