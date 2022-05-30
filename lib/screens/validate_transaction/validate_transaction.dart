@@ -23,7 +23,7 @@ class _ValidateTransaction extends State<ValidateTransaction>{
 
   List<String> mtnNumbers = ['650','651','652','653','654','680'];
   List<String> orangeNumbers = ['655','656','657','658','659'];
-  late String provider;
+  late String provider = '';
 
   late int subscriptionId; // sim card subscription ID
   late String code;
@@ -251,7 +251,7 @@ class _ValidateTransaction extends State<ValidateTransaction>{
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                const Text('Service fee ',
+                                Text('${provider.toUpperCase()} fee ',
                                   style: TextStyle(
                                       color: kGreyColor,
                                       fontSize: 18,
