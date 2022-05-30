@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:qr_flutter/qr_flutter.dart';
 
 import '../../constants.dart';
 
@@ -14,6 +15,8 @@ class ReceiveMoneyScreen extends StatefulWidget{
 }
 
 class _ReceiveMoneyScreen extends State<ReceiveMoneyScreen>{
+
+  List<String> data = ["",""];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -79,6 +82,12 @@ class _ReceiveMoneyScreen extends State<ReceiveMoneyScreen>{
               ],
             ),
           ),
+          const SizedBox(height: 50,),
+          QrImage(
+            data: '["677730204","Mbah Javis"]',
+            version: 2,
+            size: 250,
+          )
         ],
       )
     );
