@@ -154,7 +154,7 @@ class _ValidateTransaction extends State<ValidateTransaction>{
                         children: [
                           Container(
                             padding: const EdgeInsets.only(bottom: 15, top: 10),
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                                 border: Border(
                                     bottom: BorderSide(width: 1.0, color: kBorderColor)
                                 )
