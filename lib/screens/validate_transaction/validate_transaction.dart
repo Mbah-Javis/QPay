@@ -23,7 +23,7 @@ class _ValidateTransaction extends State<ValidateTransaction>{
 
   List<String> mtnNumbers = ['650','651','652','653','654','680'];
   List<String> orangeNumbers = ['655','656','657','658','659'];
-  late String provider = '';
+  late String provider;
 
   late int subscriptionId; // sim card subscription ID
   late String code;
