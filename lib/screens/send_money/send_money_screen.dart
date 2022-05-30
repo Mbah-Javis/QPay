@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:qpay/screens/validate_transaction/validate_transaction.dart';
+import 'package:fluttercontactpicker/fluttercontactpicker.dart';
 
 import '../../constants.dart';
 import '../../input_field.dart';
@@ -21,7 +22,16 @@ class _SendMoneyScreen extends State<SendMoneyScreen>{
   TextEditingController reasonForTransfer = TextEditingController();
 
   @override
+  void initState() {
+    super.initState();
+  }
+
+  PhoneContact? _phoneContact;
+  String? _contact;
+
+  @override
   Widget build(BuildContext context) {
+
    return Scaffold(
      body: Column(
        children: [
@@ -104,7 +114,7 @@ class _SendMoneyScreen extends State<SendMoneyScreen>{
                    const SizedBox(height: 30,),
                    Container(
                      margin: const EdgeInsets.all(15),
-                     padding: EdgeInsets.only(left: 10, right: 10, top: 20, bottom: 20),
+                     padding: const EdgeInsets.only(left: 10, right: 10, top: 20, bottom: 20),
                      decoration: BoxDecoration(
                          boxShadow: const [BoxShadow(
                            color: Color(0x4B6D6679),
@@ -119,7 +129,7 @@ class _SendMoneyScreen extends State<SendMoneyScreen>{
                          alignment: Alignment.topRight,
                          height: 50,
                          width: 50,
-                         margin: EdgeInsets.only(bottom: 10),
+                         margin: const EdgeInsets.only(bottom: 10),
                          decoration: BoxDecoration(
                            color: kPrimaryColor,
                            boxShadow: const [
@@ -131,8 +141,16 @@ class _SendMoneyScreen extends State<SendMoneyScreen>{
                            ],
                            borderRadius: BorderRadius.circular(25),
                          ),
-                         child: IconButton(onPressed: (){},
-                             icon: Icon(
+                         child: IconButton(
+                             onPressed: () async {
+                               final PhoneContact contact =
+                               await FlutterContactPicker.pickPhoneContact();
+                               print(contact);
+                               setState(() {
+                                 _phoneContact = contact;
+                               });
+                         },
+                             icon: const Icon(
                                Icons.contact_phone_rounded,
                                size: 25,
                                color: Colors.white,

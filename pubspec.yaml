@@ -39,6 +39,7 @@ dependencies:
   ussd_advanced: ^1.0.0
   top_snackbar_flutter: ^1.1.1
   qr_flutter: ^4.0.0
+  fluttercontactpicker: ^4.6.0
 
 dev_dependencies:
   flutter_test:
