@@ -16,7 +16,6 @@ class ReceiveMoneyScreen extends StatefulWidget{
 
 class _ReceiveMoneyScreen extends State<ReceiveMoneyScreen>{
 
-  List<String> data = ["",""];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -82,11 +81,49 @@ class _ReceiveMoneyScreen extends State<ReceiveMoneyScreen>{
               ],
             ),
           ),
-          const SizedBox(height: 50,),
-          QrImage(
-            data: '["677730204","Mbah Javis"]',
-            version: 2,
-            size: 250,
+          const SizedBox(height: 30,),
+          Container(
+            margin: const EdgeInsets.all(10),
+            padding: EdgeInsets.all(25),
+            decoration: BoxDecoration(
+                boxShadow: const [BoxShadow(
+                  color: Color(0x4B6D6679),
+                  offset: Offset(0.0, 1.0),
+                  blurRadius: 6.0,
+                )],
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(30)
+            ),
+            child: Column(
+              children: [
+                Text(
+                  'Let the sender scan this QR code',
+                  style: TextStyle(
+                    color: kPrimaryColor,
+                    fontSize: 18,
+                    fontWeight: FontWeight.w700
+                  ),
+                ),
+                SizedBox(height: 10,),
+                Container(
+                  padding: EdgeInsets.all(10),
+                  child: QrImage(
+                    data: '677730204 Mbah Javis',
+                    version: 2,
+                    size: 250,
+                  ),
+                ),
+                SizedBox(height: 20,),
+                Text(
+                  'Let the sender scan this QR code',
+                  style: TextStyle(
+                      color: kPrimaryColor,
+                      fontSize: 18,
+                      fontWeight: FontWeight.w700
+                  ),
+                ),
+              ],
+            ),
           )
         ],
       )
