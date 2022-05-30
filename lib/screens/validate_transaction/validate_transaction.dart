@@ -141,6 +141,12 @@ class _ValidateTransaction extends State<ValidateTransaction>{
                       margin: const EdgeInsets.only(left: 15, bottom: 10, top: 15, right: 15),
                       padding: const EdgeInsets.all(15),
                       decoration: BoxDecoration(
+                          boxShadow: const [BoxShadow(
+                            color: Color(0x4B6D6679),
+                            offset: Offset(0.0, 1.0),
+                            blurRadius: 6.0,
+                          )],
+                          color: Colors.white,
                           borderRadius: BorderRadius.circular(10),
                           border: Border.all(width: 1, color: kBorderColor)
                       ),

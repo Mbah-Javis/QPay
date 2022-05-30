@@ -20,6 +20,7 @@ class _ReceiveMoneyScreen extends State<ReceiveMoneyScreen>{
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
             decoration: const BoxDecoration(
@@ -83,46 +84,54 @@ class _ReceiveMoneyScreen extends State<ReceiveMoneyScreen>{
           ),
           const SizedBox(height: 30,),
           Container(
-            margin: const EdgeInsets.all(10),
-            padding: EdgeInsets.all(25),
-            decoration: BoxDecoration(
-                boxShadow: const [BoxShadow(
-                  color: Color(0x4B6D6679),
-                  offset: Offset(0.0, 1.0),
-                  blurRadius: 6.0,
-                )],
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(30)
+            alignment: Alignment.topLeft,
+            margin: const EdgeInsets.only(left: 20, right: 10),
+            child: const Text(
+              'Let the sender scan this QR code',
+              style: TextStyle(
+                  color: kPrimaryColor,
+                  fontSize: 20,
+                  fontWeight: FontWeight.w700
+              ),
             ),
-            child: Column(
-              children: [
-                Text(
-                  'Let the sender scan this QR code',
-                  style: TextStyle(
-                    color: kPrimaryColor,
-                    fontSize: 18,
-                    fontWeight: FontWeight.w700
+          ),
+          const SizedBox(height: 10,),
+          Center(
+            child: Container(
+              margin: const EdgeInsets.all(10),
+              padding: EdgeInsets.all(25),
+              decoration: BoxDecoration(
+                  boxShadow: const [BoxShadow(
+                    color: Color(0x4B6D6679),
+                    offset: Offset(0.0, 1.0),
+                    blurRadius: 6.0,
+                  )],
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(30),
+                  border: Border.all(width: 1, color: kBorderColor)
+              ),
+              child: Column(
+                children: [
+                  SizedBox(height: 10,),
+                  Container(
+                    padding: EdgeInsets.all(10),
+                    child: QrImage(
+                      data: '677730204 Mbah Javis',
+                      version: 2,
+                      size: 250,
+                    ),
                   ),
-                ),
-                SizedBox(height: 10,),
-                Container(
-                  padding: EdgeInsets.all(10),
-                  child: QrImage(
-                    data: '677730204 Mbah Javis',
-                    version: 2,
-                    size: 250,
+                  SizedBox(height: 20,),
+                  const Text(
+                    'Let the sender scan this QR code',
+                    style: TextStyle(
+                        color: kPrimaryColor,
+                        fontSize: 18,
+                        fontWeight: FontWeight.w700
+                    ),
                   ),
-                ),
-                SizedBox(height: 20,),
-                Text(
-                  'Let the sender scan this QR code',
-                  style: TextStyle(
-                      color: kPrimaryColor,
-                      fontSize: 18,
-                      fontWeight: FontWeight.w700
-                  ),
-                ),
-              ],
+                ],
+              ),
             ),
           )
         ],
