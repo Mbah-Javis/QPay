@@ -1,8 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:page_transition/page_transition.dart';
+import 'package:qpay/screens/validate_transaction/validate_transaction.dart';
 
 import '../../constants.dart';
+import '../../input_field.dart';
 
 class SendMoneyScreen extends StatefulWidget{
   const SendMoneyScreen({Key? key}) : super(key: key);
@@ -13,6 +16,10 @@ class SendMoneyScreen extends StatefulWidget{
 }
 
 class _SendMoneyScreen extends State<SendMoneyScreen>{
+  TextEditingController phoneController = TextEditingController();
+  TextEditingController amountController = TextEditingController();
+  TextEditingController reasonForTransfer = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
    return Scaffold(
@@ -66,7 +73,7 @@ class _SendMoneyScreen extends State<SendMoneyScreen>{
                      //margin: EdgeInsets.only(top:60),
                      alignment: Alignment.topCenter,
                      child: const Text(
-                       'Receive Money',
+                       'Send Money',
                        style: TextStyle(
                            color: Colors.white,
                            fontSize: 20,
@@ -89,6 +96,108 @@ class _SendMoneyScreen extends State<SendMoneyScreen>{
              ],
            ),
          ),
+         Expanded(
+             child: SingleChildScrollView(
+               physics: const BouncingScrollPhysics(),
+               child: Column(
+                 children: [
+                   const SizedBox(height: 30,),
+                   Container(
+                     margin: const EdgeInsets.all(15),
+                     padding: EdgeInsets.only(left: 10, right: 10, top: 20, bottom: 20),
+                     decoration: BoxDecoration(
+                         boxShadow: const [BoxShadow(
+                           color: Color(0x4B6D6679),
+                           offset: Offset(0.0, 1.0),
+                           blurRadius: 6.0,
+                         )],
+                         color: Colors.white,
+                         borderRadius: BorderRadius.circular(30)
+                     ),
+                     child: Column(children: [
+                       Container(
+                         alignment: Alignment.topRight,
+                         height: 50,
+                         width: 50,
+                         margin: EdgeInsets.only(bottom: 10),
+                         decoration: BoxDecoration(
+                           color: kPrimaryColor,
+                           boxShadow: const [
+                             BoxShadow(
+                               color: Colors.deepPurple,
+                               offset: Offset(0.0, 1.0),
+                               blurRadius: 6.0,
+                             ),
+                           ],
+                           borderRadius: BorderRadius.circular(25),
+                         ),
+                         child: IconButton(onPressed: (){},
+                             icon: Icon(
+                               Icons.contact_phone_rounded,
+                               size: 25,
+                               color: Colors.white,
+                             )
+                         ),
+                       ),
+                       MyInputField(title: 'Receiving number', hint: 'Enter number',
+                         inputType: TextInputType.phone, controller: phoneController,),
+                       MyInputField(title: 'Amount', hint: 'Enter amount',
+                         inputType: TextInputType.number, controller: amountController,),
+                       MyInputField(title: 'Reason for transfer', hint: 'Reason for transfer',
+                         inputType: TextInputType.text, controller: reasonForTransfer,),
+                       const SizedBox(height: 15,),
+                       SizedBox(
+                         width: 200,
+                         height: 43,
+                         child: TextButton(
+                           onPressed: () {
+                             int phone = int.parse(phoneController.text.trim());
+                             int amount = int.parse(amountController.text.trim());
+                             double fee = amount*0.005;
+                             String item = reasonForTransfer.text.toString();
+                             Navigator.push(context, PageTransition(
+                                 child: ValidateTransaction(amount: amount, phoneNumber: phone, itemPurchased: item, fee: fee),
+                                 type: PageTransitionType.rightToLeft
+                             )
+                             );
+                             phoneController.clear();
+                             amountController.clear();
+                             reasonForTransfer.clear();
+                           },
+                           style:TextButton.styleFrom(
+                             primary: kPrimaryAccentColor,
+                             backgroundColor: kPrimaryAccentColor,
+                             shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(30))),
+                             elevation: 3,
+                           ),
+                           child:Row(
+                             mainAxisAlignment: MainAxisAlignment.center,
+                             children: const [
+                               SizedBox(width: 10,),
+                               Icon(
+                                 Icons.arrow_circle_up_rounded,
+                                 size: 25,
+                                 color: Colors.white,
+                               ),
+                               SizedBox(width: 10,),
+                               Text('Send Money', style: TextStyle(
+                                 color: Colors.white,
+                                 fontSize: 18,
+                               ),),
+                               SizedBox(width: 10,),
+                             ],
+                           ),
+
+                         ),
+                       ),
+                       const SizedBox(height: 20,),
+                     ],
+                     ),
+                   )
+                 ],
+               ),
+             )
+         )
        ],
      ),
    );

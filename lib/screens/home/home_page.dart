@@ -5,6 +5,7 @@ import 'package:page_transition/page_transition.dart';
 import 'package:qpay/constants.dart';
 import 'package:qpay/input_field.dart';
 import 'package:qpay/screens/receive_money/receive_money_screen.dart';
+import 'package:qpay/screens/send_money/send_money_screen.dart';
 import 'package:qpay/screens/validate_transaction/validate_transaction.dart';
 
 class HomePage extends StatefulWidget{
@@ -151,7 +152,9 @@ class _HomePage extends State<HomePage>{
                         Container(
                           alignment: Alignment.center,
                           child: TextButton(
-                            onPressed: () {  },
+                            onPressed: () {
+                              Navigator.push(context, PageTransition(child: const SendMoneyScreen(), type: PageTransitionType.rightToLeft));
+                            },
                             style:TextButton.styleFrom(
                               primary: kLightWhiteColor,
                               backgroundColor: kLightWhiteColor,
