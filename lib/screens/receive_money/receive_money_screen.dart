@@ -99,7 +99,7 @@ class _ReceiveMoneyScreen extends State<ReceiveMoneyScreen>{
           Center(
             child: Container(
               margin: const EdgeInsets.all(10),
-              padding: EdgeInsets.all(25),
+              padding: const EdgeInsets.all(35),
               decoration: BoxDecoration(
                   boxShadow: const [BoxShadow(
                     color: Color(0x4B6D6679),
@@ -113,13 +113,10 @@ class _ReceiveMoneyScreen extends State<ReceiveMoneyScreen>{
               child: Column(
                 children: [
                   SizedBox(height: 10,),
-                  Container(
-                    padding: EdgeInsets.all(10),
-                    child: QrImage(
-                      data: '677730204 Mbah Javis',
-                      version: 2,
-                      size: 250,
-                    ),
+                  QrImage(
+                    data: '677730204 Mbah Javis',
+                    version: 2,
+                    size: 250,
                   ),
                   SizedBox(height: 20,),
                   const Text(
