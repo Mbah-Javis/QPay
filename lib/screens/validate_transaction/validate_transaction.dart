@@ -329,7 +329,7 @@ class _ValidateTransaction extends State<ValidateTransaction>{
                                 const CustomSnackBar.info(
                                   backgroundColor: kPrimaryAccentColor,
                                   message:
-                                  "Invalid phone number. It has to be 9 digits",
+                                  "The number you provided is not a valid phone number",
                                 ),
                               );
                               Navigator.pop(context);
