@@ -215,8 +215,8 @@ class _ValidateTransaction extends State<ValidateTransaction>{
                           ),
                           const SizedBox(height: 10,),
                           Container(
-                            padding: EdgeInsets.only(bottom: 15, top: 5),
-                            decoration: BoxDecoration(
+                            padding: const EdgeInsets.only(bottom: 15, top: 5),
+                            decoration: const BoxDecoration(
                                 border: Border(
                                     bottom: BorderSide(width: 1.0, color: kBorderColor)
                                 )
@@ -258,7 +258,7 @@ class _ValidateTransaction extends State<ValidateTransaction>{
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text('${provider.toUpperCase()} fee ',
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                       color: kGreyColor,
                                       fontSize: 18,
                                       fontWeight: FontWeight.w700
@@ -304,7 +304,7 @@ class _ValidateTransaction extends State<ValidateTransaction>{
                           ),
                           const SizedBox(height: 20,),
                           Container(
-                            padding: EdgeInsets.only(bottom: 15, top: 5),
+                            padding: const EdgeInsets.only(bottom: 15, top: 5),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
@@ -332,7 +332,7 @@ class _ValidateTransaction extends State<ValidateTransaction>{
                     SizedBox(
                       width: 200,
                       height: 43,
-                      child: TextButton(
+                      child: widget.transactionType == 'Expenses' ? TextButton(
                         onPressed: () async {
                           try {
                             if(widget.phoneNumber.toString().length != 9){
@@ -379,6 +379,60 @@ class _ValidateTransaction extends State<ValidateTransaction>{
                             ),
                             SizedBox(width: 10,),
                             Text('Confirm Payment', style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 18,
+                            ),),
+                            SizedBox(width: 10,),
+                          ],
+                        ),
+
+                      ) : TextButton(
+                        onPressed: () async {
+                          try {
+                            if(widget.phoneNumber.toString().length != 9){
+                              showTopSnackBar(
+                                context,
+                                const CustomSnackBar.info(
+                                  backgroundColor: kPrimaryAccentColor,
+                                  message:
+                                  "The number you provided is not a valid phone number",
+                                ),
+                              );
+                              Navigator.pop(context);
+                            }else{
+                              if(provider == 'mtn'){
+                                code = '*126*9*${widget.phoneNumber}*${widget.amount}#';
+                                subscriptionId = 1;
+                                Navigator.pop(context);
+                                await UssdAdvanced.sendUssd(code: code, subscriptionId: subscriptionId);
+                              }else if(provider == 'orange'){
+                                code = '#150*1*1*${widget.phoneNumber}*${widget.amount}#';
+                                subscriptionId = 2;
+                                Navigator.pop(context);
+                                await UssdAdvanced.sendUssd(code: code, subscriptionId: subscriptionId);
+                              }
+                            }
+                          } catch(e) {
+                            //debugPrint("error! code: ${e.hashCode} - message: ${e.runtimeType}");
+                          }
+                        },
+                        style:TextButton.styleFrom(
+                          primary: kPrimaryAccentColor,
+                          backgroundColor: kPrimaryAccentColor,
+                          shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(30))),
+                          elevation: 3,
+                        ),
+                        child:Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: const [
+                            SizedBox(width: 10,),
+                            Icon(
+                              Icons.check_circle_rounded,
+                              size: 25,
+                              color: Colors.white,
+                            ),
+                            SizedBox(width: 10,),
+                            Text('Confirm Transfer', style: TextStyle(
                               color: Colors.white,
                               fontSize: 18,
                             ),),
