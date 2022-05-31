@@ -40,6 +40,7 @@ dependencies:
   top_snackbar_flutter: ^1.1.1
   qr_flutter: ^4.0.0
   fluttercontactpicker: ^4.6.0
+  date_picker_timeline: ^1.2.3
 
 dev_dependencies:
   flutter_test:
