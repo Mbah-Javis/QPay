@@ -25,8 +25,6 @@ class _SendMoneyScreen extends State<SendMoneyScreen> {
     super.initState();
   }
 
-  PhoneContact? _phoneContact;
-  String? _contact;
   String? receivingContact;
 
   @override

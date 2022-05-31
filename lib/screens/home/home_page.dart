@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:qpay/constants.dart';
 import 'package:qpay/input_field.dart';
+import 'package:qpay/screens/expenses/expenses_screen.dart';
 import 'package:qpay/screens/receive_money/receive_money_screen.dart';
 import 'package:qpay/screens/send_money/send_money_screen.dart';
 import 'package:qpay/screens/validate_transaction/validate_transaction.dart';
@@ -117,7 +118,13 @@ class _HomePage extends State<HomePage> {
                         width: 140,
                         margin: EdgeInsets.only(top: 90, left: 20),
                         child: TextButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                PageTransition(
+                                    child: const ExpensesScreen(),
+                                    type: PageTransitionType.rightToLeft));
+                          },
                           style: TextButton.styleFrom(
                             primary: kPrimaryAccentColor,
                             backgroundColor: kPrimaryAccentColor,
