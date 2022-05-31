@@ -56,7 +56,7 @@ class _HomePage extends State<HomePage> {
                       ],
                       borderRadius: BorderRadius.circular(25),
                     ),
-                    margin: EdgeInsets.only(top: 50, left: 20),
+                    margin: const EdgeInsets.only(top: 50, left: 20),
                     alignment: Alignment.topLeft,
                     child: const Icon(
                       Icons.menu_rounded,
@@ -64,7 +64,7 @@ class _HomePage extends State<HomePage> {
                       color: Colors.white,
                     )),
                 Container(
-                  margin: EdgeInsets.only(top: 50),
+                  margin: const EdgeInsets.only(top: 50),
                   alignment: Alignment.topRight,
                   child: SvgPicture.asset(
                     'assets/images/money.svg',
@@ -105,7 +105,7 @@ class _HomePage extends State<HomePage> {
                                 borderRadius: BorderRadius.circular(25),
                               ),
                               margin: EdgeInsets.only(top: 30, left: 15),
-                              child: Text(
+                              child: const Text(
                                 '+10',
                                 style: TextStyle(
                                     color: Colors.white,
@@ -275,7 +275,7 @@ class _HomePage extends State<HomePage> {
                 ),
                 Container(
                   margin: const EdgeInsets.all(20),
-                  padding: EdgeInsets.all(10),
+                  padding: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
                       boxShadow: const [
                         BoxShadow(
