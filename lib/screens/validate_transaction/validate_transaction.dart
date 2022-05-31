@@ -10,9 +10,15 @@ class ValidateTransaction extends StatefulWidget{
   final int phoneNumber;
   final int amount;
   final String? itemPurchased;
+  final String transactionType;
   final double fee;
-  const ValidateTransaction({Key? key, required this.phoneNumber,
-    required this.amount, this.itemPurchased, required this.fee}) : super(key: key);
+  const ValidateTransaction({Key? key,
+    required this.phoneNumber,
+    required this.amount,
+    this.itemPurchased,
+    required this.fee,
+    required this.transactionType
+  }) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => _ValidateTransaction();

@@ -8,20 +8,18 @@ import 'package:qpay/screens/receive_money/receive_money_screen.dart';
 import 'package:qpay/screens/send_money/send_money_screen.dart';
 import 'package:qpay/screens/validate_transaction/validate_transaction.dart';
 
-class HomePage extends StatefulWidget{
+class HomePage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => _HomePage();
-
 }
 
-class _HomePage extends State<HomePage>{
-
+class _HomePage extends State<HomePage> {
   TextEditingController phoneController = TextEditingController();
   TextEditingController amountController = TextEditingController();
   TextEditingController itemPurchasedController = TextEditingController();
 
-  List<String> mtnNumbers = ['650','651','652','653','654', '67','680' ];
-  List<String> orangeNumbers = ['655','656','657','658','659','69'];
+  List<String> mtnNumbers = ['650', '651', '652', '653', '654', '67', '680'];
+  List<String> orangeNumbers = ['655', '656', '657', '658', '659', '69'];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,14 +32,14 @@ class _HomePage extends State<HomePage>{
             child: Stack(
               children: [
                 Container(
-                  margin: EdgeInsets.only(top:60),
+                  margin: EdgeInsets.only(top: 60),
                   alignment: Alignment.topCenter,
-                  child: const Text('QPay',
+                  child: const Text(
+                    'QPay',
                     style: TextStyle(
                         color: Colors.white,
                         fontSize: 20,
-                        fontWeight: FontWeight.bold
-                    ),
+                        fontWeight: FontWeight.bold),
                   ),
                 ),
                 Container(
@@ -49,11 +47,13 @@ class _HomePage extends State<HomePage>{
                     padding: EdgeInsets.all(8),
                     decoration: BoxDecoration(
                       color: kLightColor,
-                      boxShadow: const [BoxShadow(
-                        color: Colors.deepPurple,
-                        offset: Offset(0.0, 1.0),
-                        blurRadius: 6.0,
-                      ),],
+                      boxShadow: const [
+                        BoxShadow(
+                          color: Colors.deepPurple,
+                          offset: Offset(0.0, 1.0),
+                          blurRadius: 6.0,
+                        ),
+                      ],
                       borderRadius: BorderRadius.circular(25),
                     ),
                     margin: EdgeInsets.only(top: 50, left: 20),
@@ -62,240 +62,326 @@ class _HomePage extends State<HomePage>{
                       Icons.menu_rounded,
                       size: 25,
                       color: Colors.white,
-                    )
-                ),
+                    )),
                 Container(
                   margin: EdgeInsets.only(top: 50),
                   alignment: Alignment.topRight,
-                  child:  SvgPicture.asset('assets/images/money.svg', height: 40, width: 40,),
+                  child: SvgPicture.asset(
+                    'assets/images/money.svg',
+                    height: 40,
+                    width: 40,
+                  ),
                 ),
               ],
             ),
           ),
           Expanded(
               child: SingleChildScrollView(
-                physics: const BouncingScrollPhysics(),
-                child: Column(
-                  children: [
-                    Container(
-                      color: kPrimaryColor,
-                      child: Stack(
+            physics: const BouncingScrollPhysics(),
+            child: Column(
+              children: [
+                Container(
+                  color: kPrimaryColor,
+                  child: Stack(
+                    children: [
+                      Row(
                         children: [
-                          Row(
-                            children: [
-                              Container(
-                                margin: const EdgeInsets.only(top: 35, left: 20),
-                                child: const Text('130,550 XAF',
-                                  style: TextStyle(
+                          Container(
+                            margin: const EdgeInsets.only(top: 35, left: 20),
+                            child: const Text(
+                              '130,550 XAF',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 28,
+                              ),
+                            ),
+                          ),
+                          Container(
+                              width: 40,
+                              padding: EdgeInsets.all(8),
+                              decoration: BoxDecoration(
+                                color: kGreenColor,
+                                borderRadius: BorderRadius.circular(25),
+                              ),
+                              margin: EdgeInsets.only(top: 30, left: 15),
+                              child: Text(
+                                '+10',
+                                style: TextStyle(
                                     color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 28,
-                                  ),
+                                    fontWeight: FontWeight.w600),
+                              )),
+                        ],
+                      ),
+                      Container(
+                        width: 140,
+                        margin: EdgeInsets.only(top: 90, left: 20),
+                        child: TextButton(
+                          onPressed: () {},
+                          style: TextButton.styleFrom(
+                            primary: kPrimaryAccentColor,
+                            backgroundColor: kPrimaryAccentColor,
+                            shape: const RoundedRectangleBorder(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(30))),
+                            elevation: 3,
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: const [
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Icon(
+                                Icons.money_rounded,
+                                size: 20,
+                                color: Colors.white,
+                              ),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Text(
+                                'Expenses',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 18,
                                 ),
                               ),
-                              Container(
-                                  width: 40,
-                                  padding: EdgeInsets.all(8),
-                                  decoration: BoxDecoration(
-                                    color: kGreenColor,
-                                    borderRadius: BorderRadius.circular(25),
-                                  ),
-                                  margin: EdgeInsets.only(top: 30, left: 15),
-                                  child: Text('+10', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600),)
+                              SizedBox(
+                                width: 10,
                               ),
                             ],
                           ),
-                          Container(
-                            width: 140,
-                            margin: EdgeInsets.only(top: 90, left: 20),
-                            child: TextButton(
-                              onPressed: () {  },
-                              style:TextButton.styleFrom(
-                                primary: kPrimaryAccentColor,
-                                backgroundColor: kPrimaryAccentColor,
-                                shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(30))),
-                                elevation: 3,
-                              ),
-                              child:Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: const [
-                                  SizedBox(width: 10,),
-                                  Icon(
-                                    Icons.money_rounded,
-                                    size: 20,
-                                    color: Colors.white,
-                                  ),
-                                  SizedBox(width: 10,),
-                                  Text('Expenses', style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 18,
-                                  ),),
-                                  SizedBox(width: 10,),
-                                ],
-                              ),
-
-                            ),
-                          ),
-                          Container(
-                            margin: const EdgeInsets.only(top: 55),
-                            alignment: Alignment.topRight,
-                            child:  SvgPicture.asset('assets/images/pay.svg', height: 100, width: 100,),
-                          )
-                        ],
+                        ),
                       ),
-                    ),
-                    const SizedBox(height: 20,),
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Container(
-                          alignment: Alignment.center,
-                          child: TextButton(
-                            onPressed: () {
-                              Navigator.push(context, PageTransition(child: const SendMoneyScreen(), type: PageTransitionType.rightToLeft));
-                            },
-                            style:TextButton.styleFrom(
-                              primary: kLightWhiteColor,
-                              backgroundColor: kLightWhiteColor,
-                              shadowColor: kLightWhiteColor,
-                              shape: const RoundedRectangleBorder(
-                                borderRadius: BorderRadius.all(Radius.circular(30)),
-                              ),
-                              elevation: 3,
-                            ),
-                            child: Row(
-                              children: const [
-                                SizedBox(width: 20,),
-                                Icon(
-                                  Icons.arrow_circle_up_rounded,
-                                  size: 25,
-                                  color: kLightColor,
-                                ),
-                                SizedBox(width: 10,),
-                                Text('  Send  ', style: TextStyle(
-                                  color: kLightColor,
-                                  fontSize: 18,
-                                ),),
-                                SizedBox(width: 20,),
-                              ],
-                            ),
-
-                          ),
+                      Container(
+                        margin: const EdgeInsets.only(top: 55),
+                        alignment: Alignment.topRight,
+                        child: SvgPicture.asset(
+                          'assets/images/pay.svg',
+                          height: 100,
+                          width: 100,
                         ),
-                        const SizedBox(width: 20,),
-                        Container(
-                          alignment: Alignment.center,
-                          child: TextButton(
-                            onPressed: () {
-                              Navigator.push(context, PageTransition(child: const ReceiveMoneyScreen(), type: PageTransitionType.rightToLeft));
-                            },
-                            style:TextButton.styleFrom(
-                              primary: kLightWhiteColor,
-                              backgroundColor: kLightWhiteColor,
-                              shadowColor: kLightWhiteColor,
-                              shape: const RoundedRectangleBorder(
-                                borderRadius: BorderRadius.all(Radius.circular(30)),
-                              ),
-                              elevation: 3,
-                            ),
-                            child: Row(
-                              children: const [
-                                SizedBox(width: 20,),
-                                Icon(
-                                  Icons.arrow_circle_down_rounded,
-                                  size: 25,
-                                  color: kLightColor,
-                                ),
-                                SizedBox(width: 10,),
-                                Text('Receive ', style: TextStyle(
-                                  color: kLightColor,
-                                  fontSize: 18,
-                                ),),
-                                SizedBox(width: 20,),
-                              ],
-                            ),
-
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 5,),
+                      )
+                    ],
+                  ),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
                     Container(
-                      margin: const EdgeInsets.all(20),
-                      padding: EdgeInsets.all(10),
-                      decoration: BoxDecoration(
-                          boxShadow: const [BoxShadow(
-                            color: Color(0x4B6D6679),
-                            offset: Offset(0.0, 1.0),
-                            blurRadius: 6.0,
-                          )],
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(30)
-                      ),
-                      child: Column(children: [
-                        MyInputField(title: 'Receiving number', hint: 'Enter number',
-                          inputType: TextInputType.phone, controller: phoneController,),
-                        MyInputField(title: 'Amount', hint: 'Enter amount',
-                          inputType: TextInputType.number, controller: amountController,),
-                        MyInputField(title: 'Item purchased', hint: 'Item purchased',
-                          inputType: TextInputType.text, controller: itemPurchasedController,),
-                        const SizedBox(height: 10,),
-                        SizedBox(
-                          width: 200,
-                          height: 43,
-                          child: TextButton(
-                            onPressed: () {
-                              int phone = int.parse(phoneController.text.trim());
-                              int amount = int.parse(amountController.text.trim());
-                              double fee = amount*0.005;
-                              String item = itemPurchasedController.text.toString();
-                              Navigator.push(context, PageTransition(
-                                  child: ValidateTransaction(amount: amount, phoneNumber: phone, itemPurchased: item, fee: fee),
-                                  type: PageTransitionType.rightToLeft
-                              )
-                              );
-                              phoneController.clear();
-                              amountController.clear();
-                              itemPurchasedController.clear();
-                            },
-                            style:TextButton.styleFrom(
-                              primary: kPrimaryAccentColor,
-                              backgroundColor: kPrimaryAccentColor,
-                              shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(30))),
-                              elevation: 3,
-                            ),
-                            child:Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: const [
-                                SizedBox(width: 10,),
-                                Icon(
-                                  Icons.payments,
-                                  size: 25,
-                                  color: Colors.white,
-                                ),
-                                SizedBox(width: 10,),
-                                Text('Make Payment', style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 18,
-                                ),),
-                                SizedBox(width: 10,),
-                              ],
-                            ),
-
+                      alignment: Alignment.center,
+                      child: TextButton(
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              PageTransition(
+                                  child: const SendMoneyScreen(),
+                                  type: PageTransitionType.rightToLeft));
+                        },
+                        style: TextButton.styleFrom(
+                          primary: kLightWhiteColor,
+                          backgroundColor: kLightWhiteColor,
+                          shadowColor: kLightWhiteColor,
+                          shape: const RoundedRectangleBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(30)),
                           ),
+                          elevation: 3,
                         ),
-                        const SizedBox(height: 10,),
-                      ],
+                        child: Row(
+                          children: const [
+                            SizedBox(
+                              width: 20,
+                            ),
+                            Icon(
+                              Icons.arrow_circle_up_rounded,
+                              size: 25,
+                              color: kLightColor,
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Text(
+                              '  Send  ',
+                              style: TextStyle(
+                                color: kLightColor,
+                                fontSize: 18,
+                              ),
+                            ),
+                            SizedBox(
+                              width: 20,
+                            ),
+                          ],
+                        ),
                       ),
-                    )
+                    ),
+                    const SizedBox(
+                      width: 20,
+                    ),
+                    Container(
+                      alignment: Alignment.center,
+                      child: TextButton(
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              PageTransition(
+                                  child: const ReceiveMoneyScreen(),
+                                  type: PageTransitionType.rightToLeft));
+                        },
+                        style: TextButton.styleFrom(
+                          primary: kLightWhiteColor,
+                          backgroundColor: kLightWhiteColor,
+                          shadowColor: kLightWhiteColor,
+                          shape: const RoundedRectangleBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(30)),
+                          ),
+                          elevation: 3,
+                        ),
+                        child: Row(
+                          children: const [
+                            SizedBox(
+                              width: 20,
+                            ),
+                            Icon(
+                              Icons.arrow_circle_down_rounded,
+                              size: 25,
+                              color: kLightColor,
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Text(
+                              'Receive ',
+                              style: TextStyle(
+                                color: kLightColor,
+                                fontSize: 18,
+                              ),
+                            ),
+                            SizedBox(
+                              width: 20,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
                   ],
                 ),
-              )
-          )
+                const SizedBox(
+                  height: 5,
+                ),
+                Container(
+                  margin: const EdgeInsets.all(20),
+                  padding: EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                      boxShadow: const [
+                        BoxShadow(
+                          color: Color(0x4B6D6679),
+                          offset: Offset(0.0, 1.0),
+                          blurRadius: 6.0,
+                        )
+                      ],
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(30)),
+                  child: Column(
+                    children: [
+                      MyInputField(
+                        title: 'Receiving number',
+                        hint: 'Enter number',
+                        inputType: TextInputType.phone,
+                        controller: phoneController,
+                      ),
+                      MyInputField(
+                        title: 'Amount',
+                        hint: 'Enter amount',
+                        inputType: TextInputType.number,
+                        controller: amountController,
+                      ),
+                      MyInputField(
+                        title: 'Item purchased',
+                        hint: 'Item purchased',
+                        inputType: TextInputType.text,
+                        controller: itemPurchasedController,
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      SizedBox(
+                        width: 200,
+                        height: 43,
+                        child: TextButton(
+                          onPressed: () {
+                            int phone = int.parse(phoneController.text.trim());
+                            int amount =
+                                int.parse(amountController.text.trim());
+                            double fee = amount * 0.005;
+                            String item =
+                                itemPurchasedController.text.toString();
+                            Navigator.push(
+                                context,
+                                PageTransition(
+                                    child: ValidateTransaction(
+                                      amount: amount,
+                                      phoneNumber: phone,
+                                      itemPurchased: item,
+                                      fee: fee,
+                                      transactionType: 'Expenses',
+                                    ),
+                                    type: PageTransitionType.rightToLeft));
+                            phoneController.clear();
+                            amountController.clear();
+                            itemPurchasedController.clear();
+                          },
+                          style: TextButton.styleFrom(
+                            primary: kPrimaryAccentColor,
+                            backgroundColor: kPrimaryAccentColor,
+                            shape: const RoundedRectangleBorder(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(30))),
+                            elevation: 3,
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: const [
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Icon(
+                                Icons.payments,
+                                size: 25,
+                                color: Colors.white,
+                              ),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Text(
+                                'Make Payment',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 18,
+                                ),
+                              ),
+                              SizedBox(
+                                width: 10,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                    ],
+                  ),
+                )
+              ],
+            ),
+          ))
         ],
       ),
     );
   }
-
 }

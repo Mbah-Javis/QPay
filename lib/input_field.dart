@@ -6,6 +6,7 @@ import 'constants.dart';
 class MyInputField extends StatelessWidget{
   final String title;
   final String hint;
+  final String? initialText;
   final TextInputType inputType;
   final TextEditingController? controller;
   final Widget? widget;
@@ -14,7 +15,9 @@ class MyInputField extends StatelessWidget{
     required this.title,
     required this.hint,
     this.controller,
-    this.widget, required this.inputType
+    this.widget,
+    required this.inputType,
+    this.initialText
   }) : super(key: key);
 
   @override
@@ -49,6 +52,7 @@ class MyInputField extends StatelessWidget{
               children: [
                 Expanded(
                   child: TextFormField(
+                    initialValue: initialText,
                     readOnly: widget==null ? false : true,
                     keyboardType: inputType,
                     validator: (value) => value!.isNotEmpty ? null : "Field required!",
