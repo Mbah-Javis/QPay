@@ -135,7 +135,7 @@ class _ValidateTransaction extends State<ValidateTransaction>{
                     Container(
                       alignment: Alignment.topLeft,
                       margin: const EdgeInsets.only(left: 20, top: 10, bottom: 5),
-                      child: Text('Your transaction',
+                      child: const Text('Your transaction',
                         style: TextStyle(
                             color: kPrimaryColor,
                             fontSize: 22,
@@ -187,8 +187,8 @@ class _ValidateTransaction extends State<ValidateTransaction>{
                           ),
                           const SizedBox(height: 20,),
                           Container(
-                            padding: EdgeInsets.only(bottom: 15, top: 5),
-                            decoration: BoxDecoration(
+                            padding: const EdgeInsets.only(bottom: 15, top: 5),
+                            decoration: const BoxDecoration(
                                 border: Border(
                                     bottom: BorderSide(width: 1.0, color: kBorderColor)
                                 )
