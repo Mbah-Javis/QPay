@@ -5,34 +5,52 @@ import 'package:flutter_svg/svg.dart';
 
 import '../../constants.dart';
 
-class ExpensesScreen extends StatefulWidget{
+class ExpensesScreen extends StatefulWidget {
   const ExpensesScreen({Key? key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => _ExpensesScreen();
-
 }
 
-class _ExpensesScreen extends State<ExpensesScreen>{
-
+class _ExpensesScreen extends State<ExpensesScreen> {
   final DateTime _selectedDate = DateTime.now();
 
-  late int _selectedIndex;
-  final List<String> _options = ['January', 'February', 'March', 'April', 'May', 'June', 'July',
-    'August', 'September', 'October','November', 'December'];
+  int _selectedIndex = DateTime.now().month;
+  final List<String> _options = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December'
+  ];
 
   Widget _buildChips() {
-    List<Widget> chips = List.empty();
+    List<Widget> chips = List.empty(growable: true);
 
     for (int i = 0; i < _options.length; i++) {
       ChoiceChip choiceChip = ChoiceChip(
         selected: _selectedIndex == i,
-        label: Text(_options[i], style: const TextStyle(color: Colors.white)),
-        elevation: 10,
-        pressElevation: 5,
-        shadowColor: kLightColor,
-        backgroundColor: Colors.pink,
-        selectedColor: Colors.blue,
+        label: Container(
+          width: 80,
+          height: 30,
+          alignment: Alignment.center,
+          child: Text(_options[i],
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 16,
+                fontWeight: FontWeight.w600
+              )),
+        ),
+        shadowColor: kGreyColor,
+        backgroundColor: const Color(0xDD4B13CD),
+        selectedColor: Colors.pink,
         onSelected: (bool selected) {
           setState(() {
             if (selected) {
@@ -43,14 +61,14 @@ class _ExpensesScreen extends State<ExpensesScreen>{
       );
 
       chips.add(Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10),
-          child: choiceChip
-      ));
+          padding: const EdgeInsets.symmetric(horizontal: 8),
+          child: choiceChip));
     }
 
     return ListView(
       // This next line does the trick.
       scrollDirection: Axis.horizontal,
+      physics: const BouncingScrollPhysics(),
       children: chips,
     );
   }
@@ -125,7 +143,11 @@ class _ExpensesScreen extends State<ExpensesScreen>{
                     ),
                   ],
                 ),
-
+                Container(
+                  height: 40,
+                  margin: EdgeInsets.only(top: 20),
+                  child: _buildChips(),
+                ),
                 /*Container(
                   margin: const EdgeInsets.only(top: 8, right: 5, left: 5),
                   padding: const EdgeInsets.all(10),
@@ -158,5 +180,4 @@ class _ExpensesScreen extends State<ExpensesScreen>{
       ),
     );
   }
-
 }
