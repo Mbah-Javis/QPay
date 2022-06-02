@@ -10,6 +10,8 @@ import 'package:qpay/screens/send_money/send_money_screen.dart';
 import 'package:qpay/screens/validate_transaction/validate_transaction.dart';
 
 class HomePage extends StatefulWidget {
+  const HomePage({Key? key}) : super(key: key);
+
   @override
   State<StatefulWidget> createState() => _HomePage();
 }
@@ -33,7 +35,7 @@ class _HomePage extends State<HomePage> {
             child: Stack(
               children: [
                 Container(
-                  margin: EdgeInsets.only(top: 60),
+                  margin: const EdgeInsets.only(top: 60),
                   alignment: Alignment.topCenter,
                   child: const Text(
                     'QPay',
@@ -45,7 +47,7 @@ class _HomePage extends State<HomePage> {
                 ),
                 Container(
                     width: 42,
-                    padding: EdgeInsets.all(8),
+                    padding: const EdgeInsets.all(8),
                     decoration: BoxDecoration(
                       color: kLightColor,
                       boxShadow: const [
@@ -100,12 +102,12 @@ class _HomePage extends State<HomePage> {
                           ),
                           Container(
                               width: 40,
-                              padding: EdgeInsets.all(8),
+                              padding: const EdgeInsets.all(8),
                               decoration: BoxDecoration(
                                 color: kGreenColor,
                                 borderRadius: BorderRadius.circular(25),
                               ),
-                              margin: EdgeInsets.only(top: 30, left: 15),
+                              margin: const EdgeInsets.only(top: 30, left: 15),
                               child: const Text(
                                 '+10',
                                 style: TextStyle(
@@ -116,7 +118,7 @@ class _HomePage extends State<HomePage> {
                       ),
                       Container(
                         width: 140,
-                        margin: EdgeInsets.only(top: 90, left: 20),
+                        margin: const EdgeInsets.only(top: 90, left: 20),
                         child: TextButton(
                           onPressed: () {
                             Navigator.push(

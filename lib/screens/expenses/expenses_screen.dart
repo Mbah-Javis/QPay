@@ -145,7 +145,7 @@ class _ExpensesScreen extends State<ExpensesScreen> {
                 ),
                 Container(
                   height: 40,
-                  margin: EdgeInsets.only(top: 20),
+                  margin: const EdgeInsets.only(top: 20),
                   child: _buildChips(),
                 ),
                 /*Container(
