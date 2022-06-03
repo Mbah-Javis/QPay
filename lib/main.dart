@@ -50,6 +50,7 @@ class _MyHomePageState extends State<MyHomePage> {
               Center(
                 child: TextButton(
                     onPressed: (){
+                      //Navigate to home screen
                       Navigator.push(context, PageTransition(child: HomeScreen(title: 'QPay',), type: PageTransitionType.rightToLeft));
                     },
                     child: Text('Go to homescreen'))
