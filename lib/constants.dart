@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+//Constant colors and variables 
 const kPrimaryColor = Color(0xFF4B13CD);
 const kLightColor = Color(0xFF6621FF);
 const kLightColor2 = Color(0xA96621FF);
