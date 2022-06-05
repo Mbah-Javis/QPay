@@ -130,7 +130,7 @@ class _ValidateTransaction extends State<ValidateTransaction> {
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 15,
                 ),
               ],
