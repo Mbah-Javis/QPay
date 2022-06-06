@@ -131,7 +131,6 @@ class _ValidateTransaction extends State<ValidateTransaction> {
                           },
                         )),
                     Container(
-                      //margin: EdgeInsets.only(top:60),
                       alignment: Alignment.topCenter,
                       child: const Text(
                         'Validate Transaction',
