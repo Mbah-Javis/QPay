@@ -32,7 +32,6 @@ class _ValidateTransaction extends State<ValidateTransaction> {
 
   late int subscriptionId; // sim card subscription ID
   late String code;
-  String? _response; // ussd code payload
 
   @override
   void initState() {
