@@ -68,7 +68,7 @@ class _ValidateTransaction extends State<ValidateTransaction> {
       return 'orange';
     } else {
       int i = 0;
-      for (i == 0; i < 7; i++) {
+      for (i == 0; i < 11; i++) {
         if (number.substring(0, 3) == mtnNumbers[i]) {
           return 'mtn';
         } else if (number.substring(0, 3) == orangeNumbers[i]) {
