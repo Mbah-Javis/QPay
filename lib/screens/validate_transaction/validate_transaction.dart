@@ -26,8 +26,30 @@ class ValidateTransaction extends StatefulWidget {
 }
 
 class _ValidateTransaction extends State<ValidateTransaction> {
-  List<String> mtnNumbers = ['650', '651', '652', '653', '654', '680', '681','682','683','684'];
-  List<String> orangeNumbers = ['655', '656', '657', '658', '659','685','686','687','688','689'];
+  List<String> mtnNumbers = [
+    '650',
+    '651',
+    '652',
+    '653',
+    '654',
+    '680',
+    '681',
+    '682',
+    '683',
+    '684'
+  ];
+  List<String> orangeNumbers = [
+    '655',
+    '656',
+    '657',
+    '658',
+    '659',
+    '685',
+    '686',
+    '687',
+    '688',
+    '689'
+  ];
   late String provider;
 
   late int subscriptionId; // sim card subscription ID
