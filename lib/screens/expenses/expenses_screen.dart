@@ -16,6 +16,7 @@ class _ExpensesScreen extends State<ExpensesScreen> {
   final DateTime _selectedDate = DateTime.now();
 
   int _selectedIndex = DateTime.now().month-1;
+
   final List<String> _options = [
     'January',
     'February',
@@ -33,7 +34,6 @@ class _ExpensesScreen extends State<ExpensesScreen> {
 
   Widget _buildChips() {
     List<Widget> chips = List.empty(growable: true);
-
     for (int i = 0; i < _options.length; i++) {
       ChoiceChip choiceChip = ChoiceChip(
         selected: _selectedIndex == i,
