@@ -15,7 +15,7 @@ class ExpensesScreen extends StatefulWidget {
 class _ExpensesScreen extends State<ExpensesScreen> {
   final DateTime _selectedDate = DateTime.now();
 
-  int _selectedIndex = DateTime.now().month-1;
+  int _selectedIndex = DateTime.now().month - 1;
 
   final List<String> _options = [
     'January',
@@ -43,10 +43,9 @@ class _ExpensesScreen extends State<ExpensesScreen> {
           alignment: Alignment.center,
           child: Text(_options[i],
               style: const TextStyle(
-                color: Colors.white,
-                fontSize: 16,
-                fontWeight: FontWeight.w600
-              )),
+                  color: Colors.white,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600)),
         ),
         shadowColor: kGreyColor,
         backgroundColor: const Color(0xDD4B13CD),
