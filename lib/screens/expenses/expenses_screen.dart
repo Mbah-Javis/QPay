@@ -66,7 +66,6 @@ class _ExpensesScreen extends State<ExpensesScreen> {
     }
 
     return ListView(
-      // This next line does the trick.
       scrollDirection: Axis.horizontal,
       physics: const BouncingScrollPhysics(),
       children: chips,
