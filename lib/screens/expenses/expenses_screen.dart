@@ -15,7 +15,7 @@ class ExpensesScreen extends StatefulWidget {
 class _ExpensesScreen extends State<ExpensesScreen> {
   final DateTime _selectedDate = DateTime.now();
 
-  int _selectedIndex = DateTime.now().month;
+  int _selectedIndex = DateTime.now().month-1;
   final List<String> _options = [
     'January',
     'February',
