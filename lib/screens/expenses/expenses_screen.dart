@@ -172,10 +172,11 @@ class _ExpensesScreen extends State<ExpensesScreen> {
                 const SizedBox(
                   height: 15,
                 ),
-                ExpensesWidget(),
               ],
             ),
           ),
+          SizedBox(height: 20,),
+          const ExpensesWidget(),
         ],
       ),
     );
