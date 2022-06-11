@@ -2,6 +2,7 @@ import 'package:date_picker_timeline/date_picker_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:qpay/screens/widgets/expenses_widget.dart';
 
 import '../../constants.dart';
 
@@ -171,6 +172,7 @@ class _ExpensesScreen extends State<ExpensesScreen> {
                 const SizedBox(
                   height: 15,
                 ),
+                ExpensesWidget(),
               ],
             ),
           ),
