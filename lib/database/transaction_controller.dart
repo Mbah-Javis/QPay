@@ -1,3 +1,4 @@
+import 'package:get/get.dart';
 import 'package:qpay/models/transaction.dart';
 
 import 'db_helper.dart';
@@ -6,19 +7,25 @@ class TaskController extends GetxController{
 
   @override
   void onReady() {
-    getTask();
+    getTransactions();
     super.onReady();
   }
 
   var transactionList = <UserTransaction>[].obs;
+  var recentTransactionList = <UserTransaction>[].obs;
 
-  Future<int> addTask({UserTransaction? task}) async {
-    return await DBHelper.insert(task!);
+  Future<int> addTransaction({UserTransaction? userTransaction}) async {
+    return await DBHelper.insert(userTransaction!);
   }
 
-  void getTask() async {
+  void getTransactions() async {
     List<Map<String, dynamic>> task = await DBHelper.query();
     transactionList.assignAll(task.map((data) => UserTransaction.fromJson(data)).toList());
+  }
+
+  void getRecentTransactions() async {
+    List<Map<String, dynamic>> task = await DBHelper.recentQuery();
+    recentTransactionList.assignAll(task.map((data) => UserTransaction.fromJson(data)).toList());
   }
 
   void delete(int? id){
