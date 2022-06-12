@@ -2,9 +2,7 @@ import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:page_transition/page_transition.dart';
 import 'package:qpay/constants.dart';
-import 'package:qpay/screens/home/home_screen.dart';
 import 'package:top_snackbar_flutter/custom_snack_bar.dart';
 import 'package:top_snackbar_flutter/top_snack_bar.dart';
 import 'package:ussd_advanced/ussd_advanced.dart';
@@ -402,7 +400,7 @@ class _ValidateTransaction extends State<ValidateTransaction> {
                                   animType: AnimType.BOTTOMSLIDE,
                                   title: 'Transaction',
                                   desc:
-                                      'Add this transfer to your Transaction history?',
+                                      'Add this payment to your Transaction history?',
                                   btnCancelOnPress: () {
                                     Navigator.pop(context);
                                   },
@@ -416,14 +414,35 @@ class _ValidateTransaction extends State<ValidateTransaction> {
                                   },
                                 ).show();
                                 await UssdAdvanced.sendUssd(
-                                    code: code, subscriptionId: subscriptionId);
+                                    code: code, subscriptionId: subscriptionId
+                                );
                               } else if (provider == 'orange') {
                                 code =
                                     '#150*1*1*${widget.phoneNumber}*${widget.amount}#';
                                 subscriptionId = 2;
-                                Navigator.pop(context);
+                                AwesomeDialog(
+                                  context: context,
+                                  dialogType: DialogType.QUESTION,
+                                  //barrierColor: Colors.white,
+                                  animType: AnimType.BOTTOMSLIDE,
+                                  title: 'Transaction',
+                                  desc:
+                                  'Add this payment to your Transaction history?',
+                                  btnCancelOnPress: () {
+                                    Navigator.pop(context);
+                                  },
+                                  btnOkColor: kPrimaryColor,
+                                  btnCancelColor: kGreyColor,
+                                  btnOkText: 'Yes',
+                                  btnCancelText: 'No',
+                                  dismissOnTouchOutside: false,
+                                  btnOkOnPress: () {
+                                    Navigator.pop(context);
+                                  },
+                                ).show();
                                 await UssdAdvanced.sendUssd(
-                                    code: code, subscriptionId: subscriptionId);
+                                    code: code, subscriptionId: subscriptionId
+                                );
                               }
                             } catch (e) {
                               //debugPrint("error! code: ${e.hashCode} - message: ${e.runtimeType}");

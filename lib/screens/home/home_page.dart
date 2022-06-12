@@ -8,6 +8,8 @@ import 'package:qpay/screens/expenses/expenses_screen.dart';
 import 'package:qpay/screens/receive_money/receive_money_screen.dart';
 import 'package:qpay/screens/send_money/send_money_screen.dart';
 import 'package:qpay/screens/validate_transaction/validate_transaction.dart';
+import 'package:top_snackbar_flutter/custom_snack_bar.dart';
+import 'package:top_snackbar_flutter/top_snack_bar.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -345,6 +347,15 @@ class _HomePage extends State<HomePage> {
                               phoneController.clear();
                               amountController.clear();
                               itemPurchasedController.clear();
+                            }else {
+                              showTopSnackBar(
+                                context,
+                                const CustomSnackBar.info(
+                                  backgroundColor: kPrimaryAccentColor,
+                                  message:
+                                  "The number you entered is not a valid phone number",
+                                ),
+                              );
                             }
                           },
                           style: TextButton.styleFrom(
