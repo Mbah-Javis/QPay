@@ -299,7 +299,7 @@ class _HomePage extends State<HomePage> {
                     children: [
                       MyInputField(
                         title: 'Receiving number',
-                        hint: 'Enter number',
+                        hint: 'Enter phone number',
                         inputType: TextInputType.phone,
                         controller: phoneController,
                       ),

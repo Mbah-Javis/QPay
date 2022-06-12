@@ -55,7 +55,7 @@ class ExpensesWidget extends StatelessWidget {
                               style: TextStyle(color: kGreyColor, fontSize: 17),
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 6,
                           ),
                           const Text(

@@ -166,8 +166,8 @@ class _SendMoneyScreen extends State<SendMoneyScreen> {
                             )),
                       ),
                       MyInputField(
-                        title: 'Receiving number',
-                        hint: 'Enter number',
+                        title: 'Beneficiary number',
+                        hint: 'Enter phone number',
                         inputType: TextInputType.phone,
                         controller: phoneController,
                       ),
