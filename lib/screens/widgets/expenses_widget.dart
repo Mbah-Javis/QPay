@@ -50,7 +50,7 @@ class ExpensesWidget extends StatelessWidget {
                         children: [
                           Container(
                             width: 120,
-                            child: Text(
+                            child: const Text(
                               "Bag of rice",
                               style: TextStyle(color: kGreyColor, fontSize: 17),
                             ),
@@ -58,7 +58,7 @@ class ExpensesWidget extends StatelessWidget {
                           SizedBox(
                             height: 6,
                           ),
-                          Text(
+                          const Text(
                             "To: 677730204",
                             style: TextStyle(
                               fontSize: 18,
@@ -79,7 +79,7 @@ class ExpensesWidget extends StatelessWidget {
                   ],
                 ),
                 Container(
-                  child: Text(
+                  child: const Text(
                     '-20000 XAF',
                     style: TextStyle(
                       color: kPrimaryAccentColor,
