@@ -2,7 +2,11 @@ import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:qpay/constants.dart';
+import 'package:qpay/database/transaction_controller.dart';
+import 'package:qpay/models/transaction.dart';
 import 'package:top_snackbar_flutter/custom_snack_bar.dart';
 import 'package:top_snackbar_flutter/top_snack_bar.dart';
 import 'package:ussd_advanced/ussd_advanced.dart';
@@ -55,6 +59,8 @@ class _ValidateTransaction extends State<ValidateTransaction> {
 
   late int subscriptionId; // sim card subscription ID
   late String code;
+
+  final TransactionController _transactionController = Get. put(TransactionController());
 
   @override
   void initState() {
@@ -589,5 +595,18 @@ class _ValidateTransaction extends State<ValidateTransaction> {
         ],
       ),
     );
+  }
+
+  addTransactionToDb() async {
+    await _transactionController.addTransaction(
+        userTransaction: UserTransaction(
+          title: widget.itemPurchased,
+          phoneNumber: widget.phoneNumber.toString(),
+          date: DateFormat.yMMMd().format(DateTime.now()),
+          time: DateFormat.jm().format(DateTime.now()),
+          transactionType: widget.transactionType,
+        )
+    );
+
   }
 }

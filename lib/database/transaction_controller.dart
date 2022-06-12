@@ -3,7 +3,7 @@ import 'package:qpay/models/transaction.dart';
 
 import 'db_helper.dart';
 
-class TaskController extends GetxController{
+class TransactionController extends GetxController{
 
   @override
   void onReady() {
