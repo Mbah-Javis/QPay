@@ -329,20 +329,23 @@ class _HomePage extends State<HomePage> {
                             double fee = amount * 0.005;
                             String item =
                                 itemPurchasedController.text.toString();
-                            Navigator.push(
-                                context,
-                                PageTransition(
-                                    child: ValidateTransaction(
-                                      amount: amount,
-                                      phoneNumber: phone,
-                                      itemPurchased: item,
-                                      fee: fee,
-                                      transactionType: 'Expenses',
-                                    ),
-                                    type: PageTransitionType.rightToLeft));
-                            phoneController.clear();
-                            amountController.clear();
-                            itemPurchasedController.clear();
+                            if(phoneController.text.trim().toString().length == 9){
+                              Navigator.push(
+                                  context,
+                                  PageTransition(
+                                      child: ValidateTransaction(
+                                        amount: amount,
+                                        phoneNumber: phone,
+                                        itemPurchased: item,
+                                        fee: fee,
+                                        transactionType: 'Expenses',
+                                      ),
+                                      type: PageTransitionType.rightToLeft)
+                              );
+                              phoneController.clear();
+                              amountController.clear();
+                              itemPurchasedController.clear();
+                            }
                           },
                           style: TextButton.styleFrom(
                             primary: kPrimaryAccentColor,

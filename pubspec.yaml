@@ -43,6 +43,7 @@ dependencies:
   date_picker_timeline: ^1.2.3
   sqflite: ^2.0.2
   intl: ^0.17.0
+  awesome_dialog: ^2.2.1
 
 dev_dependencies:
   flutter_test:
