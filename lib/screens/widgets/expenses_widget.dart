@@ -9,9 +9,9 @@ class ExpensesWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(left: 5),
+      padding: const EdgeInsets.only(left: 5),
       margin: const EdgeInsets.all(10),
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: kGreenColor,
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(20),
@@ -44,7 +44,7 @@ class ExpensesWidget extends StatelessWidget {
                       width: 55,
                     ),
                     Container(
-                      margin: EdgeInsets.only(left: 15),
+                      margin: const EdgeInsets.only(left: 15),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
