@@ -65,7 +65,7 @@ class ExpensesWidget extends StatelessWidget {
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 6,
                           ),
                           Text(
