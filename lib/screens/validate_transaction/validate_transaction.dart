@@ -486,37 +486,62 @@ class _ValidateTransaction extends State<ValidateTransaction> {
                       : TextButton(
                           onPressed: () async {
                             try {
-                              if (widget.phoneNumber.toString().length != 9) {
-                                showTopSnackBar(
-                                  context,
-                                  const CustomSnackBar.info(
-                                    backgroundColor: kPrimaryAccentColor,
-                                    message:
-                                        "The number you provided is not a valid phone number",
-                                  ),
-                                );
-                                Navigator.pop(context);
-                              } else {
                                 if (provider == 'mtn') {
                                   code =
                                       '*126*9*${widget.phoneNumber}*${widget.amount}#';
                                   subscriptionId = 1;
-                                  Navigator.pop(context);
+                                  AwesomeDialog(
+                                    context: context,
+                                    dialogType: DialogType.QUESTION,
+                                    //barrierColor: Colors.white,
+                                    animType: AnimType.BOTTOMSLIDE,
+                                    title: 'Transaction',
+                                    desc:
+                                    'Add this transfer to your Transaction history?',
+                                    btnCancelOnPress: () {
+                                      Navigator.pop(context);
+                                    },
+                                    btnOkColor: kPrimaryColor,
+                                    btnCancelColor: kGreyColor,
+                                    btnOkText: 'Yes',
+                                    btnCancelText: 'No',
+                                    dismissOnTouchOutside: false,
+                                    btnOkOnPress: () {
+                                      Navigator.pop(context);
+                                    },
+                                  ).show();
                                   await UssdAdvanced.sendUssd(
-                                      code: code,
-                                      subscriptionId: subscriptionId);
+                                      code: code, subscriptionId: subscriptionId);
                                 } else if (provider == 'orange') {
                                   code =
                                       '#150*1*1*${widget.phoneNumber}*${widget.amount}#';
                                   subscriptionId = 2;
-                                  Navigator.pop(context);
+                                  AwesomeDialog(
+                                    context: context,
+                                    dialogType: DialogType.QUESTION,
+                                    //barrierColor: Colors.white,
+                                    animType: AnimType.BOTTOMSLIDE,
+                                    title: 'Transaction',
+                                    desc:
+                                    'Add this transfer to your Transaction history?',
+                                    btnCancelOnPress: () {
+                                      Navigator.pop(context);
+                                    },
+                                    btnOkColor: kPrimaryColor,
+                                    btnCancelColor: kGreyColor,
+                                    btnOkText: 'Yes',
+                                    btnCancelText: 'No',
+                                    dismissOnTouchOutside: false,
+                                    btnOkOnPress: () {
+                                      Navigator.pop(context);
+                                    },
+                                  ).show();
                                   await UssdAdvanced.sendUssd(
-                                      code: code,
-                                      subscriptionId: subscriptionId);
+                                      code: code, subscriptionId: subscriptionId);
                                 }
-                              }
+
                             } catch (e) {
-                              //debugPrint("error! code: ${e.hashCode} - message: ${e.runtimeType}");
+
                             }
                           },
                           style: TextButton.styleFrom(

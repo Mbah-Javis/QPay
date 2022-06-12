@@ -4,6 +4,8 @@ import 'package:flutter_svg/svg.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:qpay/screens/validate_transaction/validate_transaction.dart';
 import 'package:fluttercontactpicker/fluttercontactpicker.dart';
+import 'package:top_snackbar_flutter/custom_snack_bar.dart';
+import 'package:top_snackbar_flutter/top_snack_bar.dart';
 
 import '../../constants.dart';
 import '../../input_field.dart';
@@ -196,20 +198,32 @@ class _SendMoneyScreen extends State<SendMoneyScreen> {
                                 int.parse(amountController.text.trim());
                             double fee = amount * 0.005;
                             String item = reasonForTransfer.text.toString();
-                            Navigator.push(
-                                context,
-                                PageTransition(
-                                    child: ValidateTransaction(
+                            if(phoneController.text.trim().toString().length == 9){
+                              Navigator.push(
+                                  context,
+                                  PageTransition(
+                                      child: ValidateTransaction(
                                         amount: amount,
                                         phoneNumber: phone,
                                         itemPurchased: item,
                                         fee: fee,
-                                      transactionType: 'Transfer',
-                                    ),
-                                    type: PageTransitionType.rightToLeft));
-                            phoneController.clear();
-                            amountController.clear();
-                            reasonForTransfer.clear();
+                                        transactionType: 'Transfer',
+                                      ),
+                                      type: PageTransitionType.rightToLeft));
+                              phoneController.clear();
+                              amountController.clear();
+                              reasonForTransfer.clear();
+                            }else{
+                              showTopSnackBar(
+                                context,
+                                const CustomSnackBar.info(
+                                  backgroundColor: kPrimaryAccentColor,
+                                  message:
+                                  "The number you entered is not a valid phone number",
+                                ),
+                              );
+
+                            }
                           },
                           style: TextButton.styleFrom(
                             primary: kPrimaryAccentColor,
