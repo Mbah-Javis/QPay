@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:qpay/constants.dart';
-import 'package:qpay/input_field.dart';
 import 'package:qpay/screens/home/favorites_page.dart';
 import 'package:qpay/screens/home/transaction_page.dart';
 import 'package:qpay/screens/home/user_page.dart';

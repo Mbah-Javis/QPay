@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:qpay/constants.dart';
-import 'package:qpay/input_field.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:qpay/screens/home/home_screen.dart';
 
-void main() {
+import 'database/db_helper.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await DBHelper.initDb();
   runApp(const MyApp());
 }
 

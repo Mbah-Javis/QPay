@@ -416,7 +416,8 @@ class _ValidateTransaction extends State<ValidateTransaction> {
                                   btnCancelText: 'No',
                                   dismissOnTouchOutside: false,
                                   btnOkOnPress: () {
-                                    Navigator.pop(context);
+                                    addTransactionToDb();
+                                    //Navigator.pop(context);
                                   },
                                 ).show();
                                 await UssdAdvanced.sendUssd(
@@ -443,6 +444,7 @@ class _ValidateTransaction extends State<ValidateTransaction> {
                                   btnCancelText: 'No',
                                   dismissOnTouchOutside: false,
                                   btnOkOnPress: () {
+                                    addTransactionToDb();
                                     Navigator.pop(context);
                                   },
                                 ).show();
@@ -513,6 +515,7 @@ class _ValidateTransaction extends State<ValidateTransaction> {
                                     btnCancelText: 'No',
                                     dismissOnTouchOutside: false,
                                     btnOkOnPress: () {
+                                      addTransactionToDb();
                                       Navigator.pop(context);
                                     },
                                   ).show();
@@ -539,6 +542,7 @@ class _ValidateTransaction extends State<ValidateTransaction> {
                                     btnCancelText: 'No',
                                     dismissOnTouchOutside: false,
                                     btnOkOnPress: () {
+                                      addTransactionToDb();
                                       Navigator.pop(context);
                                     },
                                   ).show();
@@ -601,7 +605,7 @@ class _ValidateTransaction extends State<ValidateTransaction> {
     await _transactionController.addTransaction(
         userTransaction: UserTransaction(
           title: widget.itemPurchased,
-          phoneNumber: widget.phoneNumber.toString(),
+          phoneNumber: widget.phoneNumber,
           date: DateFormat.yMMMd().format(DateTime.now()),
           time: DateFormat.jm().format(DateTime.now()),
           transactionType: widget.transactionType,

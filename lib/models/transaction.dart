@@ -1,7 +1,7 @@
 class UserTransaction {
   int? id;
   String? title;
-  String? phoneNumber;
+  int? phoneNumber;
   int? amount;
   String? date;
   String? time;

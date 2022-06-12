@@ -20,7 +20,7 @@ class DBHelper {
               "CREATE TABLE $_tableName("
                   "id INTEGER PRIMARY KEY AUTOINCREMENT,"
                   "title STRING,"
-                  "phoneNumber STRING,"
+                  "phoneNumber INTEGER,"
                   "amount INTEGER,"
                   "date STRING,"
                   "time STRING,"
@@ -32,6 +32,7 @@ class DBHelper {
     }
   }
   static Future<int> insert(UserTransaction userTransaction) async {
+    print('adding ${userTransaction.title} transaction');
     return await _db!.insert(_tableName, userTransaction.toJson());
   }
 
