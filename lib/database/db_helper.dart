@@ -12,6 +12,7 @@ class DBHelper {
     }
     try{
       String _path = await getDatabasesPath() + 'user_transactions.db';
+      //Create database
       _db = await openDatabase(
           _path,
           version: _version,
