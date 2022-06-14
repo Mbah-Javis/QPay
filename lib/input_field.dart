@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'constants.dart';
 
 class MyInputField extends StatelessWidget{
+  
+  //Input data to the widget variables
   final String title;
   final String hint;
   final String? initialText;
