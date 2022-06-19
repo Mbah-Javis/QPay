@@ -29,11 +29,15 @@ class _TransactionsPage extends State<TransactionsPage>{
       body: Column(
         children: [
           const SizedBox(height: 50,),
-      Center(
-        child: Container(
-            margin: EdgeInsets.all(100),
-            child: Text(_taskController.transactionList.length.toString()
-            )
+          TextButton(onPressed: (){
+            _taskController.getTransactions();
+            print(_taskController.transactionList.length);
+          }, child: Text('Get transactions')),
+          Center(
+            child: Container(
+                margin: EdgeInsets.all(100),
+                child: Text(_taskController.transactionList.length.toString()
+                )
         ),
       ),
           /*Expanded(

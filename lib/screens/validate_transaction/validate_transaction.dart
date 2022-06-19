@@ -408,6 +408,7 @@ class _ValidateTransaction extends State<ValidateTransaction> {
                                   desc:
                                       'Add this payment to your Transaction history?',
                                   btnCancelOnPress: () {
+                                    print('cancel transaction');
                                     Navigator.pop(context);
                                   },
                                   btnOkColor: kPrimaryColor,
@@ -415,8 +416,8 @@ class _ValidateTransaction extends State<ValidateTransaction> {
                                   btnOkText: 'Yes',
                                   btnCancelText: 'No',
                                   dismissOnTouchOutside: false,
-                                  btnOkOnPress: () {
-                                    addTransactionToDb();
+                                  btnOkOnPress: () async {
+                                    await addTransactionToDb();
                                     //Navigator.pop(context);
                                   },
                                 ).show();

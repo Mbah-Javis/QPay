@@ -32,7 +32,6 @@ class DBHelper {
     }
   }
   static Future<int> insert(UserTransaction userTransaction) async {
-    print('adding ${userTransaction.title} transaction');
     return await _db!.insert(_tableName, userTransaction.toJson());
   }
 
