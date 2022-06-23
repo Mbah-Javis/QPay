@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:qpay/database/transaction_controller.dart';
-import 'package:qpay/models/transaction.dart';
 
 class TransactionsPage extends StatefulWidget{
   const TransactionsPage({Key? key}) : super(key: key);

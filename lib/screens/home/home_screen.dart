@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 import 'package:qpay/constants.dart';
+import 'package:qpay/database/transaction_controller.dart';
 import 'package:qpay/screens/home/favorites_page.dart';
 import 'package:qpay/screens/home/transaction_page.dart';
 import 'package:qpay/screens/home/user_page.dart';
@@ -17,6 +19,16 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+
+  final _taskController = Get.put(TransactionController());
+
+
+  @override
+  void initState() {
+    super.initState();
+    _taskController.getTransactions();
+    print(_taskController.transactionList.length.toString());
+  }
 
   int _selectedIndex = 0;
 
