@@ -18,6 +18,7 @@ class _ExpensesScreen extends State<ExpensesScreen> {
 
   int _selectedIndex = DateTime.now().month - 1;
 
+  //List of months
   final List<String> _options = [
     'January',
     'February',
