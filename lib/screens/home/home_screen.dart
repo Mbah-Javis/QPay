@@ -22,7 +22,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
   final _taskController = Get.put(TransactionController());
 
-
   @override
   void initState() {
     super.initState();

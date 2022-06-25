@@ -14,12 +14,12 @@ class TransactionsPage extends StatefulWidget{
 class _TransactionsPage extends State<TransactionsPage>{
 
   final _taskController = Get.put(TransactionController());
-
-
+  String count = '';
   @override
   void initState() {
     super.initState();
     _taskController.getTransactions();
+    count = _taskController.transactionList.length.toString();
   }
 
   @override
@@ -35,7 +35,7 @@ class _TransactionsPage extends State<TransactionsPage>{
           Center(
             child: Container(
                 margin: EdgeInsets.all(100),
-                child: Text(_taskController.transactionList.length.toString()
+                child: Text(count
                 )
         ),
       ),

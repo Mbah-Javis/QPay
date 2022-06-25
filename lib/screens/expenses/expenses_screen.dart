@@ -1,13 +1,16 @@
-import 'package:date_picker_timeline/date_picker_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
+import 'package:qpay/database/transaction_controller.dart';
+import 'package:qpay/models/transaction.dart';
 import 'package:qpay/screens/widgets/expenses_widget.dart';
 
 import '../../constants.dart';
 
 class ExpensesScreen extends StatefulWidget {
-  const ExpensesScreen({Key? key}) : super(key: key);
+
+  const ExpensesScreen({Key? key,}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => _ExpensesScreen();
@@ -17,6 +20,8 @@ class _ExpensesScreen extends State<ExpensesScreen> {
   final DateTime _selectedDate = DateTime.now();
 
   int _selectedIndex = DateTime.now().month - 1;
+
+  final _taskController = Get.put(TransactionController());
 
   final List<String> _options = [
     'January',
@@ -70,7 +75,7 @@ class _ExpensesScreen extends State<ExpensesScreen> {
       physics: const BouncingScrollPhysics(),
       children: chips,
     );
-  }
+  } 
 
   @override
   Widget build(BuildContext context) {

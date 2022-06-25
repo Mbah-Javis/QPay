@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:qpay/constants.dart';
+import 'package:qpay/database/transaction_controller.dart';
 import 'package:qpay/input_field.dart';
 import 'package:qpay/screens/expenses/expenses_screen.dart';
 import 'package:qpay/screens/receive_money/receive_money_screen.dart';
@@ -25,6 +27,7 @@ class _HomePage extends State<HomePage> {
 
   List<String> mtnNumbers = ['650', '651', '652', '653', '654', '67', '680'];
   List<String> orangeNumbers = ['655', '656', '657', '658', '659', '69'];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -94,7 +97,7 @@ class _HomePage extends State<HomePage> {
                           Container(
                             margin: const EdgeInsets.only(top: 35, left: 20),
                             child: const Text(
-                              '130,550 XAF',
+                              '****** XAF',
                               style: TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold,
