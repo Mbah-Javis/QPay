@@ -45,6 +45,7 @@ dependencies:
   intl: ^0.17.0
   awesome_dialog: ^2.2.1
   get: ^4.6.1
+  flutter_staggered_animations: ^1.0.0
 
 dev_dependencies:
   flutter_test:

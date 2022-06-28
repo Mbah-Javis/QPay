@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -21,7 +23,7 @@ class _ExpensesScreen extends State<ExpensesScreen> {
 
   int _selectedIndex = DateTime.now().month - 1;
 
-  final _taskController = Get.put(TransactionController());
+  final _transactionController = Get.put(TransactionController());
 
   final List<String> _options = [
     'January',
@@ -181,7 +183,33 @@ class _ExpensesScreen extends State<ExpensesScreen> {
             ),
           ),
           const SizedBox(height: 20,),
-          const ExpensesWidget(),
+          Expanded(
+            child: Obx(() {
+              return ListView.builder(
+                  physics: const BouncingScrollPhysics(),
+                  itemCount: _transactionController.transactionList.length,
+                  itemBuilder: (_, index){
+                    UserTransaction transaction = _transactionController.transactionList[index];
+
+                    return AnimationConfiguration.staggeredGrid(
+                        position: index,
+                        columnCount: _transactionController.transactionList.length,
+                        child: SlideAnimation(
+                          child: FadeInAnimation(
+                            child: ExpensesWidget(
+                              title: transaction.title!,
+                              number: transaction.phoneNumber.toString(),
+                              amount: transaction.amount.toString(),
+                              date: transaction.date!,
+                              time: transaction.time!,
+                            ),
+                          ),
+                        )
+                    );
+                  }
+              );
+            }),
+          ),
         ],
       ),
     );

@@ -4,7 +4,13 @@ import 'package:intl/intl.dart';
 import 'package:qpay/constants.dart';
 
 class ExpensesWidget extends StatelessWidget {
-  const ExpensesWidget({Key? key}) : super(key: key);
+  final String title;
+  final String number;
+  final String amount;
+  final String date;
+  final String time;
+  const ExpensesWidget({Key? key, required this.title, required this.number, required this.amount,
+    required this.date, required this.time}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -50,16 +56,16 @@ class ExpensesWidget extends StatelessWidget {
                         children: [
                           Container(
                             width: 120,
-                            child: const Text(
-                              "Bag of rice",
+                            child: Text(
+                              title,
                               style: TextStyle(color: kGreyColor, fontSize: 17),
                             ),
                           ),
                           const SizedBox(
                             height: 6,
                           ),
-                          const Text(
-                            "To: 677730204",
+                          Text(
+                            number,
                             style: TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
@@ -69,9 +75,9 @@ class ExpensesWidget extends StatelessWidget {
                             height: 6,
                           ),
                           Text(
-                            DateFormat.yMMMd().format(DateTime.now()) +
+                            date+
                                 " | " +
-                                DateFormat.jm().format(DateTime.now()),
+                                time,
                           )
                         ],
                       ),
@@ -79,9 +85,9 @@ class ExpensesWidget extends StatelessWidget {
                   ],
                 ),
                 Container(
-                  child: const Text(
-                    '-20000 XAF',
-                    style: TextStyle(
+                  child: Text(
+                    amount,
+                    style: const TextStyle(
                       color: kPrimaryAccentColor,
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
