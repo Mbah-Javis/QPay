@@ -86,7 +86,7 @@ class ExpensesWidget extends StatelessWidget {
                 ),
                 Container(
                   child: Text(
-                    amount,
+                    "-"+amount,
                     style: const TextStyle(
                       color: kPrimaryAccentColor,
                       fontSize: 18,

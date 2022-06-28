@@ -76,7 +76,13 @@ class _ExpensesScreen extends State<ExpensesScreen> {
       physics: const BouncingScrollPhysics(),
       children: chips,
     );
-  } 
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _transactionController.getTransactions();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -189,7 +195,6 @@ class _ExpensesScreen extends State<ExpensesScreen> {
                   itemCount: _transactionController.transactionList.length,
                   itemBuilder: (_, index){
                     UserTransaction transaction = _transactionController.transactionList[index];
-                    print(transaction.amount);
                     return AnimationConfiguration.staggeredGrid(
                         position: index,
                         columnCount: _transactionController.transactionList.length,
