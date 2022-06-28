@@ -126,6 +126,7 @@ class _HomePage extends State<HomePage> {
                         margin: const EdgeInsets.only(top: 90, left: 20),
                         child: TextButton(
                           onPressed: () {
+                            TransactionController().getTransactions();
                             Navigator.push(
                                 context,
                                 PageTransition(

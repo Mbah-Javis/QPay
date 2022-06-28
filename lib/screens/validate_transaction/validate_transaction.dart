@@ -545,6 +545,7 @@ class _ValidateTransaction extends State<ValidateTransaction> {
                                     btnOkOnPress: () {
                                       addTransactionToDb();
                                       Navigator.pop(context);
+                                      TransactionController().getTransactions();
                                     },
                                   ).show();
                                   await UssdAdvanced.sendUssd(
