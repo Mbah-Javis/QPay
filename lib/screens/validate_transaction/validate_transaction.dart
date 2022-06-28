@@ -610,6 +610,7 @@ class _ValidateTransaction extends State<ValidateTransaction> {
           date: DateFormat.yMMMd().format(DateTime.now()),
           time: DateFormat.jm().format(DateTime.now()),
           transactionType: widget.transactionType,
+          amount: widget.amount,
         )
     );
 

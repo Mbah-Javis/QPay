@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
@@ -191,7 +189,7 @@ class _ExpensesScreen extends State<ExpensesScreen> {
                   itemCount: _transactionController.transactionList.length,
                   itemBuilder: (_, index){
                     UserTransaction transaction = _transactionController.transactionList[index];
-
+                    print(transaction.amount);
                     return AnimationConfiguration.staggeredGrid(
                         position: index,
                         columnCount: _transactionController.transactionList.length,
