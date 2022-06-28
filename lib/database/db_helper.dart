@@ -37,11 +37,11 @@ class DBHelper {
   }
 
   static Future<List<Map<String, dynamic>>> query() async {
-    return await _db!.query(_tableName);
+    return await _db!.query(_tableName, orderBy: 'date DESC, time DESC');
   }
 
   static Future<List<Map<String, dynamic>>> recentQuery() async {
-    return await _db!.query(_tableName, orderBy: 'date', limit: 4);
+    return await _db!.query(_tableName, orderBy: 'date DESC, time DESC', limit: 4);
   }
 
   static delete(int? id) async {

@@ -195,21 +195,26 @@ class _ExpensesScreen extends State<ExpensesScreen> {
                   itemCount: _transactionController.transactionList.length,
                   itemBuilder: (_, index){
                     UserTransaction transaction = _transactionController.transactionList[index];
-                    return AnimationConfiguration.staggeredGrid(
-                        position: index,
-                        columnCount: _transactionController.transactionList.length,
-                        child: SlideAnimation(
-                          child: FadeInAnimation(
-                            child: ExpensesWidget(
-                              title: transaction.title!,
-                              number: transaction.phoneNumber.toString(),
-                              amount: transaction.amount.toString(),
-                              date: transaction.date!,
-                              time: transaction.time!,
+                    if(transaction.date!.substring(0,3) == _options[_selectedIndex].substring(0, 3)
+                        && transaction.transactionType == 'Expenses'){
+                      return AnimationConfiguration.staggeredGrid(
+                          position: index,
+                          columnCount: _transactionController.transactionList.length,
+                          child: SlideAnimation(
+                            child: FadeInAnimation(
+                              child: ExpensesWidget(
+                                title: transaction.title!,
+                                number: transaction.phoneNumber.toString(),
+                                amount: transaction.amount.toString(),
+                                date: transaction.date!,
+                                time: transaction.time!,
+                              ),
                             ),
-                          ),
-                        )
-                    );
+                          )
+                      );
+                    }else {
+                      return Center();
+                    }
                   }
               );
             }),
