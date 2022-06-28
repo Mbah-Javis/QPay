@@ -159,28 +159,6 @@ class _ExpensesScreen extends State<ExpensesScreen> {
                   margin: const EdgeInsets.only(top: 20),
                   child: _buildChips(),
                 ),
-                /*Container(
-                  margin: const EdgeInsets.only(top: 8, right: 5, left: 5),
-                  padding: const EdgeInsets.all(10),
-                  child: DatePicker(
-                    DateTime.utc(DateTime.now().year),
-                    height: 100,
-                    width: 80,
-                    initialSelectedDate: DateTime.now(),
-                    selectionColor: kPrimaryColor,
-                    selectedTextColor: Colors.white,
-                    dateTextStyle: const TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.w600,
-                        color: Colors.grey
-                    ),
-                    onDateChange: (date){
-                      setState(() {
-                        _selectedDate = date;
-                      });
-                    },
-                  ),
-                ),*/
                 const SizedBox(
                   height: 15,
                 ),
