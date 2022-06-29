@@ -28,7 +28,6 @@ class _HomePage extends State<HomePage> {
   List<String> mtnNumbers = ['650', '651', '652', '653', '654', '67', '680'];
   List<String> orangeNumbers = ['655', '656', '657', '658', '659', '69'];
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -206,30 +205,43 @@ class _HomePage extends State<HomePage> {
                           shape: const RoundedRectangleBorder(
                             borderRadius: BorderRadius.all(Radius.circular(30)),
                           ),
-                          elevation: 3,
+                          elevation: 2,
                         ),
-                        child: Row(
-                          children: const [
-                            SizedBox(
-                              width: 20,
-                            ),
-                            Icon(
-                              Icons.arrow_circle_up_rounded,
-                              size: 25,
-                              color: kLightColor,
-                            ),
-                            SizedBox(
-                              width: 10,
-                            ),
-                            Text(
-                              '  Send  ',
-                              style: TextStyle(
-                                color: kLightColor,
-                                fontSize: 18,
+                        child: Column(
+                          children: [
+                            Container(
+                              margin: const EdgeInsets.only(top: 20, bottom: 20),
+                              alignment: Alignment.topRight,
+                              child: SvgPicture.asset(
+                                'assets/images/pay.svg',
+                                height: 70,
+                                width: 60,
                               ),
                             ),
-                            SizedBox(
-                              width: 20,
+                            Row(
+                              children: const [
+                                SizedBox(
+                                  width: 20,
+                                ),
+                                Icon(
+                                  Icons.arrow_circle_up_rounded,
+                                  size: 25,
+                                  color: kLightColor,
+                                ),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                Text(
+                                  '  Send  ',
+                                  style: TextStyle(
+                                    color: kLightColor,
+                                    fontSize: 18,
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 20,
+                                ),
+                              ],
                             ),
                           ],
                         ),

@@ -165,7 +165,7 @@ class _ExpensesScreen extends State<ExpensesScreen> {
               ],
             ),
           ),
-          const SizedBox(height: 20,),
+          const SizedBox(height: 10,),
           Expanded(
             child: Obx(() {
               return ListView.builder(
