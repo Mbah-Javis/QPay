@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:get/get.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:qpay/constants.dart';
 import 'package:qpay/database/transaction_controller.dart';
@@ -182,7 +181,7 @@ class _HomePage extends State<HomePage> {
                   ),
                 ),
                 const SizedBox(
-                  height: 20,
+                  height: 25,
                 ),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -190,6 +189,19 @@ class _HomePage extends State<HomePage> {
                   children: [
                     Container(
                       alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                        color: kPrimaryColor,
+                        image: DecorationImage(
+                            image: AssetImage("assets/images/bg1.png"), fit: BoxFit.cover),
+                        borderRadius: BorderRadius.all(Radius.circular(30)),
+                        boxShadow: const [
+                          BoxShadow(
+                            color: Color(0x4B6D6679),
+                            offset: Offset(0.0, 1.0),
+                            blurRadius: 6.0,
+                          )
+                        ],
+                      ),
                       child: TextButton(
                         onPressed: () {
                           Navigator.push(
@@ -199,13 +211,12 @@ class _HomePage extends State<HomePage> {
                                   type: PageTransitionType.rightToLeft));
                         },
                         style: TextButton.styleFrom(
-                          primary: kLightWhiteColor,
-                          backgroundColor: kPrimaryColor2,
-                          shadowColor: kLightWhiteColor,
+                          primary: Colors.transparent,
+                          backgroundColor: Colors.transparent,
                           shape: const RoundedRectangleBorder(
                             borderRadius: BorderRadius.all(Radius.circular(30)),
                           ),
-                          elevation: 2,
+                          elevation: 0,
                         ),
                         child: Column(
                           children: [
@@ -224,7 +235,7 @@ class _HomePage extends State<HomePage> {
                                 '   Send   ',
                                 style: TextStyle(
                                   color: Colors.white,
-                                  fontSize: 18,
+                                  fontSize: 19,
                                 ),
                               ),
                             ),
@@ -237,6 +248,19 @@ class _HomePage extends State<HomePage> {
                     ),
                     Container(
                       alignment: Alignment.center,
+                      decoration: const BoxDecoration(
+                        color: kPrimaryAccentColor,
+                        image: DecorationImage(
+                            image: AssetImage("assets/images/bg2.png"), fit: BoxFit.cover),
+                        borderRadius: BorderRadius.all(Radius.circular(30)),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Color(0x4B6D6679),
+                            offset: Offset(0.0, 1.0),
+                            blurRadius: 6.0,
+                          )
+                        ],
+                      ),
                       child: TextButton(
                         onPressed: () {
                           Navigator.push(
@@ -246,13 +270,12 @@ class _HomePage extends State<HomePage> {
                                   type: PageTransitionType.rightToLeft));
                         },
                         style: TextButton.styleFrom(
-                          primary: kLightWhiteColor,
-                          backgroundColor: kPrimaryAccentColor,
-                          shadowColor: kLightWhiteColor,
+                          primary: Colors.transparent,
+                          backgroundColor: Colors.transparent,
                           shape: const RoundedRectangleBorder(
                             borderRadius: BorderRadius.all(Radius.circular(30)),
                           ),
-                          elevation: 3,
+                          elevation: 0,
                         ),
                         child: Column(
                           children: [
@@ -271,7 +294,7 @@ class _HomePage extends State<HomePage> {
                                 'Receive',
                                 style: TextStyle(
                                   color: Colors.white,
-                                  fontSize: 18,
+                                  fontSize: 19,
                                 ),
                               ),
                             ),
@@ -282,12 +305,218 @@ class _HomePage extends State<HomePage> {
                   ],
                 ),
                 const SizedBox(
-                  height: 5,
+                  height: 15,
+                ),
+                GestureDetector(
+                  onTap: (){
+                    showModalBottomSheet(
+                      context: context,
+                      backgroundColor: Colors.white,
+                      elevation: 5,
+                      isScrollControlled: true,
+                      shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.vertical(
+                          top: Radius.circular(20),
+                        ),
+                      ),
+                      builder: (context) => Wrap(
+                        children: [
+                          Column(
+                            children: [
+                              Container(
+                                margin: EdgeInsets.only(top: 15),
+                                child: Text('Pay a Business',
+                                  style: TextStyle(
+                                      color: kPrimaryColor,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 20
+                                  ),
+                                ),
+                              ),
+                              Container(
+                                margin: const EdgeInsets.all(20),
+                                padding: const EdgeInsets.all(10),
+                                child: Column(
+                                  children: [
+                                    MyInputField(
+                                      title: 'Receiving phone number',
+                                      hint: 'Enter phone number',
+                                      inputType: TextInputType.phone,
+                                      controller: phoneController,
+                                    ),
+                                    MyInputField(
+                                      title: 'Amount',
+                                      hint: 'Enter amount',
+                                      inputType: TextInputType.number,
+                                      controller: amountController,
+                                    ),
+                                    MyInputField(
+                                      title: 'Item purchased',
+                                      hint: 'Item purchased',
+                                      inputType: TextInputType.text,
+                                      controller: itemPurchasedController,
+                                    ),
+                                    const SizedBox(
+                                      height: 10,
+                                    ),
+                                    SizedBox(
+                                      width: 200,
+                                      height: 43,
+                                      child: TextButton(
+                                        onPressed: () {
+                                          int phone = int.parse(phoneController.text.trim());
+                                          int amount =
+                                          int.parse(amountController.text.trim());
+                                          double fee = amount * 0.005;
+                                          String item =
+                                          itemPurchasedController.text.toString();
+                                          if(phoneController.text.trim().toString().length == 9){
+                                            Navigator.pop(context);
+                                            Navigator.push(
+                                                context,
+                                                PageTransition(
+                                                    child: ValidateTransaction(
+                                                      amount: amount,
+                                                      phoneNumber: phone,
+                                                      itemPurchased: item,
+                                                      fee: fee,
+                                                      transactionType: 'Expenses',
+                                                    ),
+                                                    type: PageTransitionType.rightToLeft)
+                                            );
+                                            phoneController.clear();
+                                            amountController.clear();
+                                            itemPurchasedController.clear();
+                                          }else {
+                                            showTopSnackBar(
+                                              context,
+                                              const CustomSnackBar.info(
+                                                backgroundColor: kPrimaryAccentColor,
+                                                message:
+                                                "The number you entered is not a valid phone number",
+                                              ),
+                                            );
+                                          }
+                                        },
+                                        style: TextButton.styleFrom(
+                                          primary: kPrimaryAccentColor,
+                                          backgroundColor: kPrimaryAccentColor,
+                                          shape: const RoundedRectangleBorder(
+                                              borderRadius:
+                                              BorderRadius.all(Radius.circular(30))),
+                                          elevation: 3,
+                                        ),
+                                        child: Row(
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          children: const [
+                                            SizedBox(
+                                              width: 10,
+                                            ),
+                                            Icon(
+                                              Icons.payments,
+                                              size: 25,
+                                              color: Colors.white,
+                                            ),
+                                            SizedBox(
+                                              width: 10,
+                                            ),
+                                            Text(
+                                              'Make Payment',
+                                              style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 18,
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              width: 10,
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                    const SizedBox(
+                                      height: 10,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              SizedBox(height: 270,)
+                            ],
+                          ),
+                        ],
+                      ),
+                    );
+                  },
+                  child: Container(
+                    margin: const EdgeInsets.all(15),
+                    padding: const EdgeInsets.all(20),
+                    height: 110,
+                    decoration: BoxDecoration(
+                        image: DecorationImage(
+                            image: AssetImage("assets/images/bg3.png"), fit: BoxFit.cover),
+                        boxShadow: const [
+                          BoxShadow(
+                            color: Color(0x4B6D6679),
+                            offset: Offset(0.0, 1.0),
+                            blurRadius: 6.0,
+                          )
+                        ],
+                        color: Colors.black,
+                        borderRadius: BorderRadius.circular(30)),
+                    child: Column(
+                      children: [
+                        Row(
+                          children: [
+                            Image.asset(
+                              'assets/images/pay_business.png',
+                              height: 58,
+                              width: 58,
+                            ),
+                            Container(
+                              margin: const EdgeInsets.only(left: 15),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  SizedBox(height: 10,),
+                                  Container(
+                                    width: 120,
+                                    child: Text(
+                                      'Pay a Business',
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold,),
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                    height: 6,
+                                  ),
+                                  Container(
+                                    width: 200,
+                                    child: const Text(
+                                      'Payment made to any business is categorized as Expenses',
+                                      style: TextStyle(
+                                        fontSize: 14,
+                                        color: Colors.white54
+                                      ),
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                    height: 6,
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
                 ),
                 Container(
-                  margin: const EdgeInsets.all(20),
+                  margin: const EdgeInsets.all(15),
                   padding: const EdgeInsets.all(20),
-                  height: 110,
+                  height: 135,
                   decoration: BoxDecoration(
                       boxShadow: const [
                         BoxShadow(
@@ -296,16 +525,16 @@ class _HomePage extends State<HomePage> {
                           blurRadius: 6.0,
                         )
                       ],
-                      color: Colors.black,
+                      color: Colors.blueAccent,
                       borderRadius: BorderRadius.circular(30)),
                   child: Column(
                     children: [
                       Row(
                         children: [
                           Image.asset(
-                            'assets/images/pay_business.png',
-                            height: 55,
-                            width: 55,
+                            'assets/images/shopping.png',
+                            height: 60,
+                            width: 60,
                           ),
                           Container(
                             margin: const EdgeInsets.only(left: 15),
@@ -314,25 +543,25 @@ class _HomePage extends State<HomePage> {
                               children: [
                                 SizedBox(height: 10,),
                                 Container(
-                                  width: 120,
+                                  width: 160,
                                   child: Text(
-                                    'Pay a Business',
+                                    'Shopping list',
                                     style: TextStyle(
                                       color: Colors.white,
-                                      fontSize: 18,
+                                      fontSize: 20,
                                       fontWeight: FontWeight.bold,),
                                   ),
                                 ),
                                 const SizedBox(
-                                  height: 6,
+                                  height: 10,
                                 ),
                                 Container(
                                   width: 200,
                                   child: const Text(
-                                    'Payment made to any business is categorized as Expenses',
+                                    'Generate shopping lists to easily make payments to items purchased while in a market or shop',
                                     style: TextStyle(
-                                      fontSize: 14,
-                                      color: Colors.white38
+                                        fontSize: 14,
+                                        color: Colors.white54
                                     ),
                                   ),
                                 ),
@@ -347,122 +576,6 @@ class _HomePage extends State<HomePage> {
                     ],
                   ),
                 ),
-                Container(
-                  margin: const EdgeInsets.all(20),
-                  padding: const EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                      boxShadow: const [
-                        BoxShadow(
-                          color: Color(0x4B6D6679),
-                          offset: Offset(0.0, 1.0),
-                          blurRadius: 6.0,
-                        )
-                      ],
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(30)),
-                  child: Column(
-                    children: [
-                      MyInputField(
-                        title: 'Receiving number',
-                        hint: 'Enter phone number',
-                        inputType: TextInputType.phone,
-                        controller: phoneController,
-                      ),
-                      MyInputField(
-                        title: 'Amount',
-                        hint: 'Enter amount',
-                        inputType: TextInputType.number,
-                        controller: amountController,
-                      ),
-                      MyInputField(
-                        title: 'Item purchased',
-                        hint: 'Item purchased',
-                        inputType: TextInputType.text,
-                        controller: itemPurchasedController,
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      SizedBox(
-                        width: 200,
-                        height: 43,
-                        child: TextButton(
-                          onPressed: () {
-                            int phone = int.parse(phoneController.text.trim());
-                            int amount =
-                                int.parse(amountController.text.trim());
-                            double fee = amount * 0.005;
-                            String item =
-                                itemPurchasedController.text.toString();
-                            if(phoneController.text.trim().toString().length == 9){
-                              Navigator.push(
-                                  context,
-                                  PageTransition(
-                                      child: ValidateTransaction(
-                                        amount: amount,
-                                        phoneNumber: phone,
-                                        itemPurchased: item,
-                                        fee: fee,
-                                        transactionType: 'Expenses',
-                                      ),
-                                      type: PageTransitionType.rightToLeft)
-                              );
-                              phoneController.clear();
-                              amountController.clear();
-                              itemPurchasedController.clear();
-                            }else {
-                              showTopSnackBar(
-                                context,
-                                const CustomSnackBar.info(
-                                  backgroundColor: kPrimaryAccentColor,
-                                  message:
-                                  "The number you entered is not a valid phone number",
-                                ),
-                              );
-                            }
-                          },
-                          style: TextButton.styleFrom(
-                            primary: kPrimaryAccentColor,
-                            backgroundColor: kPrimaryAccentColor,
-                            shape: const RoundedRectangleBorder(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(30))),
-                            elevation: 3,
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: const [
-                              SizedBox(
-                                width: 10,
-                              ),
-                              Icon(
-                                Icons.payments,
-                                size: 25,
-                                color: Colors.white,
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              Text(
-                                'Make Payment',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 18,
-                                ),
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                    ],
-                  ),
-                )
               ],
             ),
           ))
