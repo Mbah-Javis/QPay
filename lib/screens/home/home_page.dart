@@ -148,7 +148,7 @@ class _HomePage extends State<HomePage> {
                                 width: 10,
                               ),
                               Icon(
-                                Icons.money_rounded,
+                                Icons.view_list_rounded,
                                 size: 20,
                                 color: Colors.white,
                               ),
@@ -200,7 +200,7 @@ class _HomePage extends State<HomePage> {
                         },
                         style: TextButton.styleFrom(
                           primary: kLightWhiteColor,
-                          backgroundColor: kLightWhiteColor,
+                          backgroundColor: kPrimaryColor2,
                           shadowColor: kLightWhiteColor,
                           shape: const RoundedRectangleBorder(
                             borderRadius: BorderRadius.all(Radius.circular(30)),
@@ -210,38 +210,23 @@ class _HomePage extends State<HomePage> {
                         child: Column(
                           children: [
                             Container(
-                              margin: const EdgeInsets.only(top: 20, bottom: 20),
+                              margin: const EdgeInsets.only(top: 10, bottom: 5),
                               alignment: Alignment.topRight,
-                              child: SvgPicture.asset(
-                                'assets/images/pay.svg',
+                              child: Image.asset(
+                                'assets/images/send_money.png',
                                 height: 70,
                                 width: 60,
                               ),
                             ),
-                            Row(
-                              children: const [
-                                SizedBox(
-                                  width: 20,
+                            Container(
+                              margin: EdgeInsets.only(top: 5, bottom: 15, left: 40, right: 40),
+                              child: Text(
+                                '   Send   ',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 18,
                                 ),
-                                Icon(
-                                  Icons.arrow_circle_up_rounded,
-                                  size: 25,
-                                  color: kLightColor,
-                                ),
-                                SizedBox(
-                                  width: 10,
-                                ),
-                                Text(
-                                  '  Send  ',
-                                  style: TextStyle(
-                                    color: kLightColor,
-                                    fontSize: 18,
-                                  ),
-                                ),
-                                SizedBox(
-                                  width: 20,
-                                ),
-                              ],
+                              ),
                             ),
                           ],
                         ),
@@ -262,35 +247,33 @@ class _HomePage extends State<HomePage> {
                         },
                         style: TextButton.styleFrom(
                           primary: kLightWhiteColor,
-                          backgroundColor: kLightWhiteColor,
+                          backgroundColor: kPrimaryAccentColor,
                           shadowColor: kLightWhiteColor,
                           shape: const RoundedRectangleBorder(
                             borderRadius: BorderRadius.all(Radius.circular(30)),
                           ),
                           elevation: 3,
                         ),
-                        child: Row(
-                          children: const [
-                            SizedBox(
-                              width: 20,
-                            ),
-                            Icon(
-                              Icons.arrow_circle_down_rounded,
-                              size: 25,
-                              color: kLightColor,
-                            ),
-                            SizedBox(
-                              width: 10,
-                            ),
-                            Text(
-                              'Receive ',
-                              style: TextStyle(
-                                color: kLightColor,
-                                fontSize: 18,
+                        child: Column(
+                          children: [
+                            Container(
+                              margin: const EdgeInsets.only(top: 10, bottom: 5),
+                              alignment: Alignment.topRight,
+                              child: Image.asset(
+                                'assets/images/receive_money.png',
+                                height: 70,
+                                width: 60,
                               ),
                             ),
-                            SizedBox(
-                              width: 20,
+                            Container(
+                              margin:  EdgeInsets.only(top: 5, bottom: 15, left: 40, right: 40),
+                              child: Text(
+                                'Receive',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 18,
+                                ),
+                              ),
                             ),
                           ],
                         ),
@@ -300,6 +283,69 @@ class _HomePage extends State<HomePage> {
                 ),
                 const SizedBox(
                   height: 5,
+                ),
+                Container(
+                  margin: const EdgeInsets.all(20),
+                  padding: const EdgeInsets.all(20),
+                  height: 110,
+                  decoration: BoxDecoration(
+                      boxShadow: const [
+                        BoxShadow(
+                          color: Color(0x4B6D6679),
+                          offset: Offset(0.0, 1.0),
+                          blurRadius: 6.0,
+                        )
+                      ],
+                      color: Colors.black,
+                      borderRadius: BorderRadius.circular(30)),
+                  child: Column(
+                    children: [
+                      Row(
+                        children: [
+                          Image.asset(
+                            'assets/images/pay_business.png',
+                            height: 55,
+                            width: 55,
+                          ),
+                          Container(
+                            margin: const EdgeInsets.only(left: 15),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                SizedBox(height: 10,),
+                                Container(
+                                  width: 120,
+                                  child: Text(
+                                    'Pay a Business',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold,),
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 6,
+                                ),
+                                Container(
+                                  width: 200,
+                                  child: const Text(
+                                    'Payment made to any business is categorized as Expenses',
+                                    style: TextStyle(
+                                      fontSize: 14,
+                                      color: Colors.white38
+                                    ),
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 6,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
                 ),
                 Container(
                   margin: const EdgeInsets.all(20),
