@@ -393,7 +393,7 @@ class _HomePage extends State<HomePage> {
                                               const CustomSnackBar.info(
                                                 backgroundColor: kPrimaryAccentColor,
                                                 message:
-                                                "The number you entered is not a valid phone number",
+                                                "The phone number you entered is not a valid phone number",
                                               ),
                                             );
                                           }
