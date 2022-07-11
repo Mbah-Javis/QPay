@@ -440,7 +440,7 @@ class _HomePage extends State<HomePage> {
                                   ],
                                 ),
                               ),
-                              SizedBox(height: 270,)
+                              const SizedBox(height: 270,)
                             ],
                           ),
                         ],
@@ -452,7 +452,7 @@ class _HomePage extends State<HomePage> {
                     padding: const EdgeInsets.all(20),
                     height: 110,
                     decoration: BoxDecoration(
-                        image: DecorationImage(
+                        image: const DecorationImage(
                             image: AssetImage("assets/images/bg3.png"), fit: BoxFit.cover),
                         boxShadow: const [
                           BoxShadow(
@@ -477,7 +477,7 @@ class _HomePage extends State<HomePage> {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  SizedBox(height: 10,),
+                                  const SizedBox(height: 10,),
                                   Container(
                                     width: 120,
                                     child: Text(
@@ -541,7 +541,7 @@ class _HomePage extends State<HomePage> {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                SizedBox(height: 10,),
+                                const SizedBox(height: 10,),
                                 Container(
                                   width: 160,
                                   child: Text(
