@@ -7,8 +7,6 @@ import 'package:intl/intl.dart';
 import 'package:qpay/constants.dart';
 import 'package:qpay/database/transaction_controller.dart';
 import 'package:qpay/models/transaction.dart';
-import 'package:top_snackbar_flutter/custom_snack_bar.dart';
-import 'package:top_snackbar_flutter/top_snack_bar.dart';
 import 'package:ussd_advanced/ussd_advanced.dart';
 
 class ValidateTransaction extends StatefulWidget {
@@ -606,7 +604,7 @@ class _ValidateTransaction extends State<ValidateTransaction> {
   addTransactionToDb() async {
     await _transactionController.addTransaction(
         userTransaction: UserTransaction(
-          title: widget.itemPurchased,
+          title: widget.itemPurchased!.isEmpty ? widget.transactionType == "Expenses"? "Paid a business" : "Sent money" : widget.itemPurchased,
           phoneNumber: widget.phoneNumber,
           date: DateFormat.yMMMd().format(DateTime.now()),
           time: DateFormat.jm().format(DateTime.now()),
