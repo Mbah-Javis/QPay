@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:qpay/constants.dart';
 
 class ExpensesWidget extends StatelessWidget {
@@ -58,7 +57,7 @@ class ExpensesWidget extends StatelessWidget {
                             width: 120,
                             child: Text(
                               title,
-                              style: TextStyle(color: kGreyColor, fontSize: 17),
+                              style: const TextStyle(color: kGreyColor, fontSize: 17),
                             ),
                           ),
                           const SizedBox(
@@ -66,7 +65,7 @@ class ExpensesWidget extends StatelessWidget {
                           ),
                           Text(
                             number,
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
                             ),
