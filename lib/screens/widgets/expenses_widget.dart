@@ -53,7 +53,7 @@ class ExpensesWidget extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Container(
+                          SizedBox(
                             width: 120,
                             child: Text(
                               title,
